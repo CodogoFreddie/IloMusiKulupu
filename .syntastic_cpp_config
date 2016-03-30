@@ -1,0 +1,9 @@
+-I./Inc
+-I../gtest/googletest/include
+-I../gtest/googlemock/include
+-I../rapidjson/include
+-std=gnu++11
+-pthread
+-g
+-c
+-pg
