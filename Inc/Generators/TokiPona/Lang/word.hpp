@@ -10,12 +10,11 @@ enum TypeOfWord{
     NOUN,
     ADJ,
     VERB,
-    PART
+    PART,
+    PREP
 };
 
 class Word{
-private:
-
 public:
     const TypeOfWord type;
     const std::string nimi;

@@ -1,6 +1,6 @@
 Src/%.o: Src/%.cpp
 	@ echo "Compling Source: $<"
-	$(CC) -c $< 
+	@ $(CC) -c $< \
 	$(INCLUDEPATHS) \
 	$(COMPILEFLAGS) \
 	-o $@ 
@@ -16,7 +16,7 @@ Test/%.o: Test/%.cpp $(GTEST_HEADER) $(GMOCK_HEADER)
 
 %.d: %.cpp $(GTEST_HEADER) $(GMOCK_HEADER)
 	@ echo "Generating Dependancy File For: $<"
-	 $(CC) -c $< \
+	@ $(CC) -c $< \
 	$(INCLUDEPATHS) \
 	-I$(GTEST_HEADER) \
 	-I$(GMOCK_HEADER) \
