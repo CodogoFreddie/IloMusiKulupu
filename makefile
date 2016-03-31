@@ -13,24 +13,16 @@ TEST_UNITS = $(TEST_SRC:%.cpp=%.o)
 DEPENDANCY_FILES = $(CPP_SRC:%.cpp=%.d) $(TEST_SRC:%.cpp=%.d)
 MAKEFILES = $(shell find Makefiles -name "*.makefile")
 
-.PHONY: all
 all: $(EXE_NAME)
-	echo "what?"
 
-$(EXE_NAME): $(CPP_UNITS) $(TEST_UNITS)
-
-
+$(EXE_NAME): $(DEPENDANCY_FILES) $(CPP_UNITS) $(TEST_UNITS)
+	$(CC) $(CPP_UNITS) \
+	$(INCLUDEPATHS) \
+	$(COMPILEFLAGS) \
+	-o $(EXE_NAME)
 
 include $(MAKEFILES)
-include $(DEPENDANCY_FILES)
-
-#$(EXE_NAME): $(CPP_UNITS)
-	#$(CC) $(CPP_UNITS) \
-	#$(INCLUDEPATHS) \
-	#$(COMPILEFLAGS) \
-	#-o $(EXE_NAME)
-
-#$(TESTS_EXE_NAME): $(CPP_UNITS) $(TEST_UNITS) 
+-include $(DEPENDANCY_FILES)
 
 clean:
 	rm -rf $(CPP_UNITS) $(TEST_UNITS) $(DEPENDANCY_FILES)
