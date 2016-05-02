@@ -1,7 +1,5 @@
-Repos/*
-!Repos/installOtherRepos.sh
-
 *.o
 *.d
 *.out
 *.test
+*.blend1
