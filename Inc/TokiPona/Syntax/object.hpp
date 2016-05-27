@@ -7,39 +7,43 @@ namespace tokipona {
 namespace syntax {
 
 class Object{
-    int prefixObject;
-    lang::Word* word;
-    int suffixObject;
+public:
+    const bool isComposite; 
 
-    Object():
-	prefixObject(-1),
-	word(nullptr),
-	suffixObject(-1)
-    {}
+    const lang::Word& word;
 
-    Object(const lang::Word& word_):
-	prefixObject(-1),
-	word(*word_),
-	suffixObject(-1)
-    {}
+    const Object* lhs;
+    const Object* rhs;
 
-    Object(const ID prefixObject_, const lang::Word& word_):
-	prefixObject(prefixObject_),
-	word(nullptr),
-	suffixObject(-1)
-    {}
+    const std::string getWord(bool toki = false) const {
+	std::string intermediateString;
+	if(isComposite){
+	    intermediateString = lhs->getWord(toki);
+	    intermediateString += std::string(" ");
+	    intermediateString += rhs->getConnector(toki);
+	    intermediateString += std::string(" ");
+	    intermediateString += rhs->getWord(toki);
+	}
+	else{
+	    intermediateString =  word.getAsNoun();
+	}
+	return intermediateString;
+    }
 
-    Object(const lang::Word& word_, const ID suffixObject_):
-	prefixObject(-1),
-	word(nullptr),
-	suffixObject(suffixObject_)
-    {}
+    const char* getConnector(bool toki = false) const {
+	if(toki){
+	    return "";
+	}
+	else{
+	    if(isComposite){
+		return " of ";
+	    }
+	    else{
+		return word.getNounModConnector(toki);
+	    }
+	}
+    }
 
-    Object(const ID prefixObject_, const ID suffixObject_):
-	prefixObject(prefixObject_),
-	word(nullptr),
-	suffixObject(suffixObject_)
-    {}
 };
 
 } //syntax
