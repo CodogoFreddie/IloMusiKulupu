@@ -3,3 +3,10 @@
 *.out
 *.test
 *.blend1
+Repos/*
+*.out
+*.test
+
+*.o
+*.d
+test

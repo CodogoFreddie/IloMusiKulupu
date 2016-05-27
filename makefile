@@ -1,8 +1,8 @@
 CC = clang++
 INCLUDEPATHS = -I./Inc
-COMPILEFLAGS = -std=gnu++11 -Wall -pthread
+COMPILEFLAGS = -std=gnu++11 -Wall -pthread -g
 EXE_NAME = IloMusiKulupu.out
-TESTS_EXE_NAME = IloMusiKulupu.test
+TESTS_EXE_NAME = test
 
 # cpp source files and compiled objects
 CPP_SRC = $(shell find Src -name "*.cpp")
@@ -35,7 +35,7 @@ $(EXE_NAME): $(DEPENDANCY_FILES) $(CPP_UNITS)
 
 $(TESTS_EXE_NAME): $(DEPENDANCY_FILES) $(EXE_NAME) $(TEST_UNITS) $(GTEST_LIBRARY) $(GMOCK_LIBRARY)
 	@ echo "Compiling test runtime"
-	 $(CC) \
+	@ $(CC) \
 	$(TEST_UNITS) \
 	$(filter-out Src/main.o, $(CPP_UNITS)) \
 	$(GTEST_LIBRARY) \
