@@ -1,6 +1,6 @@
 CC = clang++
 INCLUDEPATHS = -I./Inc
-COMPILEFLAGS = -std=gnu++11 -Wall -pthread -g
+COMPILEFLAGS = -std=gnu++11 -Wall -pthread -g 
 EXE_NAME = IloMusiKulupu.out
 TESTS_EXE_NAME = test
 

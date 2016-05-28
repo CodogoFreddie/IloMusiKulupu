@@ -1,4 +1,4 @@
-#include<TokiPona/Lang/word.hpp>
+#include<TokiPona/Lang/nimi.hpp>
 
 using namespace tokipona;
 using namespace lang;

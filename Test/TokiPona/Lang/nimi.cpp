@@ -1,4 +1,4 @@
-#include<TokiPona/Lang/word.hpp>
+#include<TokiPona/Lang/nimi.hpp>
 
 #include<gtest/gtest.h>
 #include<gmock/gmock.h>
