@@ -2,4 +2,6 @@
 
 using namespace tokipona;
 using namespace lang;
+using namespace dictionary;
+
 
