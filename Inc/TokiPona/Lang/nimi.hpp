@@ -15,8 +15,8 @@ typedef enum NimiType{
 class Nimi{
 public:
     const NimiType type;
-    const char* nimi;
-    Nimi(const NimiType type_, const char* nimi_);
+    const char* string;
+    Nimi(const NimiType type_, const char* string_);
 };
 
 } //lang
