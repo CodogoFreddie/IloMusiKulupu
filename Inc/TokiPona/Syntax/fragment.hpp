@@ -43,9 +43,6 @@ public:
 	conjunctive(&conj_),
 	rhs(rhs_){}
 
-    constexpr Fragment operator+(const Fragment* rhs_) const {
-	return Fragment(this, rhs_);
-    }
 
     void setLeaf(const lang::Nimi&& conj_);
     void setLHS(const lang::Nimi&& conj_);
@@ -66,6 +63,10 @@ public:
     const std::string toString() const;
 };
 
+constexpr static const Fragment operator+(  const Fragment& lhs_,
+					    const Fragment& rhs_){
+    return Fragment(&lhs_, &rhs_);
+}
 
 } //syntax
 } //tokipona
