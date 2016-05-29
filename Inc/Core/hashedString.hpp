@@ -38,22 +38,22 @@ public:
 	stringLength(str.length()),
 	hash(hashStdStr(str)){};
 
-    bool operator==(const HashedString& rhs)const{
+    constexpr bool operator==(const HashedString& rhs)const{
 	return hash == rhs.hash;
     }
-    bool operator!=(const HashedString& rhs)const{
+    constexpr bool operator!=(const HashedString& rhs)const{
 	return !(*this == rhs);
     }
-    bool operator>(const HashedString& rhs)const{
+    constexpr bool operator>(const HashedString& rhs)const{
 	return hash > rhs.hash;
     }
-    bool operator<(const HashedString& rhs)const{
+    constexpr bool operator<(const HashedString& rhs)const{
 	return hash < rhs.hash;
     }
-    bool operator>=(const HashedString& rhs)const{
+    constexpr bool operator>=(const HashedString& rhs)const{
 	return !(*this < rhs);
     }
-    bool operator<=(const HashedString& rhs)const{
+    constexpr bool operator<=(const HashedString& rhs)const{
 	return !(*this > rhs);
     }
 };

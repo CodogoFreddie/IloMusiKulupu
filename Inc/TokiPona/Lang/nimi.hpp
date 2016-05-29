@@ -2,6 +2,8 @@
 
 #include <string>
 
+#include <Core/hashedString.hpp>
+
 namespace tokipona {
 
 namespace syntax{
@@ -21,8 +23,8 @@ typedef enum NimiType{
 class Nimi{
 public:
     const NimiType type;
-    const char* string;
-    Nimi(const NimiType type_, const char* string_):
+    const core::HashedString string;
+    constexpr Nimi(const NimiType type_, const char* string_):
 	type(type_), string(string_){}
 
     Nimi(Nimi& n) = delete;
@@ -30,8 +32,9 @@ public:
     Nimi operator=(Nimi& n) = delete;
     Nimi operator=(Nimi&& n) = delete;
 
-    syntax::Fragment operator+(const Nimi& rhs) const;
-    syntax::Fragment operator+(syntax::Fragment& rhs) const;
+    constexpr bool operator==(const Nimi& rhs) const {
+	return string == rhs.string;
+    }
 };
 
 } //lang
