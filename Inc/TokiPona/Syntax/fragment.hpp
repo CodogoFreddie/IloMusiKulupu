@@ -8,64 +8,67 @@
 namespace tokipona {
 namespace syntax {
 
+template<   typename LHS = lang::Nimi&,
+	    typename RHS = lang::Nimi&>
 class Fragment{
 private:
-    const lang::Nimi* leaf;
-
-    const Fragment* lhs;
+    const LHS lhs;
     const lang::Nimi* conjunctive;
-    const Fragment* rhs;
+    const RHS rhs;
 
 public:
     constexpr Fragment():
-	leaf(nullptr),
-	lhs(nullptr),
+	lhs(),
 	conjunctive(nullptr),
-	rhs(nullptr){}
+	rhs(){}
 
-    constexpr Fragment(const lang::Nimi* nimi_):
-	leaf(nimi_),
-	lhs(nullptr),
-	conjunctive(nullptr),
-	rhs(nullptr){}
-
-    constexpr Fragment(const Fragment* lhs_, const Fragment* rhs_):
-	leaf(nullptr),
+    constexpr Fragment(	const LHS lhs_,
+			const RHS rhs_):
 	lhs(lhs_),
 	conjunctive(nullptr),
 	rhs(rhs_){}
 
-    constexpr Fragment(	const Fragment* lhs_,
+    constexpr Fragment(	const LHS lhs_,
 			const lang::Nimi& conj_,
-			const Fragment* rhs_):
-	leaf(nullptr),
+			const RHS rhs_):
 	lhs(lhs_),
 	conjunctive(&conj_),
 	rhs(rhs_){}
 
-
-    void setLeaf(const lang::Nimi&& conj_);
-    void setLHS(const lang::Nimi&& conj_);
-    void setConjunctive(const lang::Nimi&& conj_);
-    void setRHS(const lang::Nimi&& conj_);
-
-    constexpr bool isLeaf() const{return (leaf!=nullptr);}
-    constexpr bool hasLhs() const{return (lhs!=nullptr);}
-    constexpr bool hasConjunctive() const{return (conjunctive!=nullptr);}
-    constexpr bool hasRhs() const{return (rhs!=nullptr);}
-    constexpr bool isValid() const{return (isLeaf() || (hasLhs() && hasRhs()));}
-
-    constexpr const lang::Nimi& getLeaf() const {return *leaf;}
-    constexpr const Fragment& getLhs() const {return *lhs;}
-    constexpr const lang::Nimi& getConjunctive() const {return *conjunctive;}
-    constexpr const Fragment& getRhs() const {return *rhs;}
-
-    const std::string toString() const;
+    constexpr const LHS& getLhs() const {return lhs;}
+    constexpr const lang::Nimi& getConj() const {return *conjunctive;}
+    constexpr const RHS& getRhs() const {return rhs;}
 };
 
-constexpr static const Fragment operator+(  const Fragment& lhs_,
-					    const Fragment& rhs_){
-    return Fragment(&lhs_, &rhs_);
+constexpr Fragment<const lang::Nimi&, const lang::Nimi&>
+	operator+(const lang::Nimi& lhs, const lang::Nimi& rhs){
+    return Fragment<const lang::Nimi&, const lang::Nimi&>(lhs, rhs);
+}
+
+template<   typename RL = void,
+	    typename RR = void>
+constexpr Fragment<const lang::Nimi&, Fragment<RL,RR>>
+	operator+(const lang::Nimi& lhs, const Fragment<RL,RR>& rhs){
+
+    return Fragment<const lang::Nimi&, Fragment<RL,RR>>(lhs, rhs);
+}
+
+template<   typename LL = void,
+	    typename LR = void>
+constexpr Fragment<Fragment<LL,LR>, const lang::Nimi&>
+	operator+(const Fragment<LL,LR>& lhs, const lang::Nimi& rhs){
+
+    return Fragment<Fragment<LL,LR>, const lang::Nimi&>(lhs, rhs);
+}
+
+template<   typename LL = void,
+	    typename LR = void,
+	    typename RL = void,
+	    typename RR = void>
+constexpr Fragment<Fragment<LL,LR>, Fragment<RL,RR>>
+	operator+(const Fragment<LL,LR>& lhs, const Fragment<RL,RR>& rhs){
+
+    return Fragment<Fragment<LL,LR>, Fragment<RL,RR>>(lhs, rhs);
 }
 
 } //syntax

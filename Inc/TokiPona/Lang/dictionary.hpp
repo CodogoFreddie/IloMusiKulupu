@@ -1,257 +1,256 @@
 #pragma once
 
 #include <TokiPona/Lang/nimi.hpp>
-#include <TokiPona/Syntax/fragment.hpp>
 
 namespace tokipona {
 namespace lang {
 namespace dictionary {
 
-static constexpr Nimi        a_n	(NOUN,	"a");
-static constexpr syntax::Fragment a(&a_n);
-static constexpr Nimi        akesi_n	(NOUN,	"akesi");
-static constexpr syntax::Fragment akesi(&akesi_n);
-static constexpr Nimi        ala_n	(NOUN,	"ala");
-static constexpr syntax::Fragment ala(&ala_n);
-static constexpr Nimi        alasa_n	(NOUN,	"alasa");
-static constexpr syntax::Fragment alasa(&alasa_n);
-static constexpr Nimi        ale_n	(NOUN,	"ale");
-static constexpr syntax::Fragment ale(&ale_n);
-static constexpr Nimi        anpa_n	(NOUN,	"anpa");
-static constexpr syntax::Fragment anpa(&anpa_n);
-static constexpr Nimi        ante_n	(NOUN,	"ante");
-static constexpr syntax::Fragment ante(&ante_n);
-static constexpr Nimi        anu_n	(NOUN,	"anu");
-static constexpr syntax::Fragment anu(&anu_n);
-static constexpr Nimi        awen_n	(NOUN,	"awen");
-static constexpr syntax::Fragment awen(&awen_n);
-static constexpr Nimi        e_n	(NOUN,	"e");
-static constexpr syntax::Fragment e(&e_n);
-static constexpr Nimi        en_n	(NOUN,	"en");
-static constexpr syntax::Fragment en(&en_n);
-static constexpr Nimi        esun_n	(NOUN,	"esun");
-static constexpr syntax::Fragment esun(&esun_n);
-static constexpr Nimi        ijo_n	(NOUN,	"ijo");
-static constexpr syntax::Fragment ijo(&ijo_n);
-static constexpr Nimi        ike_n	(NOUN,	"ike");
-static constexpr syntax::Fragment ike(&ike_n);
-static constexpr Nimi        ilo_n	(NOUN,	"ilo");
-static constexpr syntax::Fragment ilo(&ilo_n);
-static constexpr Nimi        insa_n	(NOUN,	"insa");
-static constexpr syntax::Fragment insa(&insa_n);
-static constexpr Nimi        jaki_n	(NOUN,	"jaki");
-static constexpr syntax::Fragment jaki(&jaki_n);
-static constexpr Nimi        jan_n	(NOUN,	"jan");
-static constexpr syntax::Fragment jan(&jan_n);
-static constexpr Nimi        jelo_n	(NOUN,	"jelo");
-static constexpr syntax::Fragment jelo(&jelo_n);
-static constexpr Nimi        jo_n	(NOUN,	"jo");
-static constexpr syntax::Fragment jo(&jo_n);
-static constexpr Nimi        kala_n	(NOUN,	"kala");
-static constexpr syntax::Fragment kala(&kala_n);
-static constexpr Nimi        kalama_n	(NOUN,	"kalama");
-static constexpr syntax::Fragment kalama(&kalama_n);
-static constexpr Nimi        kama_n	(NOUN,	"kama");
-static constexpr syntax::Fragment kama(&kama_n);
-static constexpr Nimi        kasi_n	(NOUN,	"kasi");
-static constexpr syntax::Fragment kasi(&kasi_n);
-static constexpr Nimi        ken_n	(NOUN,	"ken");
-static constexpr syntax::Fragment ken(&ken_n);
-static constexpr Nimi        kepeken_n	(NOUN,	"kepeken");
-static constexpr syntax::Fragment kepeken(&kepeken_n);
-static constexpr Nimi        kili_n	(NOUN,	"kili");
-static constexpr syntax::Fragment kili(&kili_n);
-static constexpr Nimi        kin_n	(NOUN,	"kin");
-static constexpr syntax::Fragment kin(&kin_n);
-static constexpr Nimi        kiwen_n	(NOUN,	"kiwen");
-static constexpr syntax::Fragment kiwen(&kiwen_n);
-static constexpr Nimi        ko_n	(NOUN,	"ko");
-static constexpr syntax::Fragment ko(&ko_n);
-static constexpr Nimi        kon_n	(NOUN,	"kon");
-static constexpr syntax::Fragment kon(&kon_n);
-static constexpr Nimi        kule_n	(NOUN,	"kule");
-static constexpr syntax::Fragment kule(&kule_n);
-static constexpr Nimi        kulupu_n	(NOUN,	"kulupu");
-static constexpr syntax::Fragment kulupu(&kulupu_n);
-static constexpr Nimi        kute_n	(NOUN,	"kute");
-static constexpr syntax::Fragment kute(&kute_n);
-static constexpr Nimi        la_n	(NOUN,	"la");
-static constexpr syntax::Fragment la(&la_n);
-static constexpr Nimi        lape_n	(NOUN,	"lape");
-static constexpr syntax::Fragment lape(&lape_n);
-static constexpr Nimi        laso_n	(NOUN,	"laso");
-static constexpr syntax::Fragment laso(&laso_n);
-static constexpr Nimi        lawa_n	(NOUN,	"lawa");
-static constexpr syntax::Fragment lawa(&lawa_n);
-static constexpr Nimi        len_n	(NOUN,	"len");
-static constexpr syntax::Fragment len(&len_n);
-static constexpr Nimi        lete_n	(NOUN,	"lete");
-static constexpr syntax::Fragment lete(&lete_n);
-static constexpr Nimi        li_n	(NOUN,	"li");
-static constexpr syntax::Fragment li(&li_n);
-static constexpr Nimi        lili_n	(NOUN,	"lili");
-static constexpr syntax::Fragment lili(&lili_n);
-static constexpr Nimi        linja_n	(NOUN,	"linja");
-static constexpr syntax::Fragment linja(&linja_n);
-static constexpr Nimi        lipu_n	(NOUN,	"lipu");
-static constexpr syntax::Fragment lipu(&lipu_n);
-static constexpr Nimi        loje_n	(NOUN,	"loje");
-static constexpr syntax::Fragment loje(&loje_n);
-static constexpr Nimi        lon_n	(NOUN,	"lon");
-static constexpr syntax::Fragment lon(&lon_n);
-static constexpr Nimi        luka_n	(NOUN,	"luka");
-static constexpr syntax::Fragment luka(&luka_n);
-static constexpr Nimi        lukin_n	(NOUN,	"lukin");
-static constexpr syntax::Fragment lukin(&lukin_n);
-static constexpr Nimi        lupa_n	(NOUN,	"lupa");
-static constexpr syntax::Fragment lupa(&lupa_n);
-static constexpr Nimi        ma_n	(NOUN,	"ma");
-static constexpr syntax::Fragment ma(&ma_n);
-static constexpr Nimi        mama_n	(NOUN,	"mama");
-static constexpr syntax::Fragment mama(&mama_n);
-static constexpr Nimi        mani_n	(NOUN,	"mani");
-static constexpr syntax::Fragment mani(&mani_n);
-static constexpr Nimi        meli_n	(NOUN,	"meli");
-static constexpr syntax::Fragment meli(&meli_n);
-static constexpr Nimi        mi_n	(NOUN,	"mi");
-static constexpr syntax::Fragment mi(&mi_n);
-static constexpr Nimi        mije_n	(NOUN,	"mije");
-static constexpr syntax::Fragment mije(&mije_n);
-static constexpr Nimi        moku_n	(NOUN,	"moku");
-static constexpr syntax::Fragment moku(&moku_n);
-static constexpr Nimi        moli_n	(NOUN,	"moli");
-static constexpr syntax::Fragment moli(&moli_n);
-static constexpr Nimi        monsi_n	(NOUN,	"monsi");
-static constexpr syntax::Fragment monsi(&monsi_n);
-static constexpr Nimi        mu_n	(NOUN,	"mu");
-static constexpr syntax::Fragment mu(&mu_n);
-static constexpr Nimi        mun_n	(NOUN,	"mun");
-static constexpr syntax::Fragment mun(&mun_n);
-static constexpr Nimi        musi_n	(NOUN,	"musi");
-static constexpr syntax::Fragment musi(&musi_n);
-static constexpr Nimi        mute_n	(NOUN,	"mute");
-static constexpr syntax::Fragment mute(&mute_n);
-static constexpr Nimi        nanpa_n	(NOUN,	"nanpa");
-static constexpr syntax::Fragment nanpa(&nanpa_n);
-static constexpr Nimi        nasa_n	(NOUN,	"nasa");
-static constexpr syntax::Fragment nasa(&nasa_n);
-static constexpr Nimi        nasin_n	(NOUN,	"nasin");
-static constexpr syntax::Fragment nasin(&nasin_n);
-static constexpr Nimi        nena_n	(NOUN,	"nena");
-static constexpr syntax::Fragment nena(&nena_n);
-static constexpr Nimi        ni_n	(NOUN,	"ni");
-static constexpr syntax::Fragment ni(&ni_n);
-static constexpr Nimi        nimi_n	(NOUN,	"nimi");
-static constexpr syntax::Fragment nimi(&nimi_n);
-static constexpr Nimi        noka_n	(NOUN,	"noka");
-static constexpr syntax::Fragment noka(&noka_n);
-static constexpr Nimi        o_n	(NOUN,	"o");
-static constexpr syntax::Fragment o(&o_n);
-static constexpr Nimi        oko_n	(NOUN,	"oko");
-static constexpr syntax::Fragment oko(&oko_n);
-static constexpr Nimi        olin_n	(NOUN,	"olin");
-static constexpr syntax::Fragment olin(&olin_n);
-static constexpr Nimi        ona_n	(NOUN,	"ona");
-static constexpr syntax::Fragment ona(&ona_n);
-static constexpr Nimi        open_n	(NOUN,	"open");
-static constexpr syntax::Fragment open(&open_n);
-static constexpr Nimi        pakala_n	(NOUN,	"pakala");
-static constexpr syntax::Fragment pakala(&pakala_n);
-static constexpr Nimi        pali_n	(NOUN,	"pali");
-static constexpr syntax::Fragment pali(&pali_n);
-static constexpr Nimi        palisa_n	(NOUN,	"palisa");
-static constexpr syntax::Fragment palisa(&palisa_n);
-static constexpr Nimi        pan_n	(NOUN,	"pan");
-static constexpr syntax::Fragment pan(&pan_n);
-static constexpr Nimi        pana_n	(NOUN,	"pana");
-static constexpr syntax::Fragment pana(&pana_n);
-static constexpr Nimi        pi_n	(NOUN,	"pi");
-static constexpr syntax::Fragment pi(&pi_n);
-static constexpr Nimi        pilin_n	(NOUN,	"pilin");
-static constexpr syntax::Fragment pilin(&pilin_n);
-static constexpr Nimi        pimeja_n	(NOUN,	"pimeja");
-static constexpr syntax::Fragment pimeja(&pimeja_n);
-static constexpr Nimi        pini_n	(NOUN,	"pini");
-static constexpr syntax::Fragment pini(&pini_n);
-static constexpr Nimi        pipi_n	(NOUN,	"pipi");
-static constexpr syntax::Fragment pipi(&pipi_n);
-static constexpr Nimi        poka_n	(NOUN,	"poka");
-static constexpr syntax::Fragment poka(&poka_n);
-static constexpr Nimi        poki_n	(NOUN,	"poki");
-static constexpr syntax::Fragment poki(&poki_n);
-static constexpr Nimi        pona_n	(NOUN,	"pona");
-static constexpr syntax::Fragment pona(&pona_n);
-static constexpr Nimi        pu_n	(NOUN,	"pu");
-static constexpr syntax::Fragment pu(&pu_n);
-static constexpr Nimi        sama_n	(NOUN,	"sama");
-static constexpr syntax::Fragment sama(&sama_n);
-static constexpr Nimi        seli_n	(NOUN,	"seli");
-static constexpr syntax::Fragment seli(&seli_n);
-static constexpr Nimi        selo_n	(NOUN,	"selo");
-static constexpr syntax::Fragment selo(&selo_n);
-static constexpr Nimi        seme_n	(NOUN,	"seme");
-static constexpr syntax::Fragment seme(&seme_n);
-static constexpr Nimi        sewi_n	(NOUN,	"sewi");
-static constexpr syntax::Fragment sewi(&sewi_n);
-static constexpr Nimi        sijelo_n	(NOUN,	"sijelo");
-static constexpr syntax::Fragment sijelo(&sijelo_n);
-static constexpr Nimi        sike_n	(NOUN,	"sike");
-static constexpr syntax::Fragment sike(&sike_n);
-static constexpr Nimi        sin_n	(NOUN,	"sin");
-static constexpr syntax::Fragment sin(&sin_n);
-static constexpr Nimi        sina_n	(NOUN,	"sina");
-static constexpr syntax::Fragment sina(&sina_n);
-static constexpr Nimi        sinpin_n	(NOUN,	"sinpin");
-static constexpr syntax::Fragment sinpin(&sinpin_n);
-static constexpr Nimi        sitelen_n	(NOUN,	"sitelen");
-static constexpr syntax::Fragment sitelen(&sitelen_n);
-static constexpr Nimi        sona_n	(NOUN,	"sona");
-static constexpr syntax::Fragment sona(&sona_n);
-static constexpr Nimi        soweli_n	(NOUN,	"soweli");
-static constexpr syntax::Fragment soweli(&soweli_n);
-static constexpr Nimi        suli_n	(NOUN,	"suli");
-static constexpr syntax::Fragment suli(&suli_n);
-static constexpr Nimi        suno_n	(NOUN,	"suno");
-static constexpr syntax::Fragment suno(&suno_n);
-static constexpr Nimi        supa_n	(NOUN,	"supa");
-static constexpr syntax::Fragment supa(&supa_n);
-static constexpr Nimi        suwi_n	(NOUN,	"suwi");
-static constexpr syntax::Fragment suwi(&suwi_n);
-static constexpr Nimi        tan_n	(NOUN,	"tan");
-static constexpr syntax::Fragment tan(&tan_n);
-static constexpr Nimi        taso_n	(NOUN,	"taso");
-static constexpr syntax::Fragment taso(&taso_n);
-static constexpr Nimi        tawa_n	(NOUN,	"tawa");
-static constexpr syntax::Fragment tawa(&tawa_n);
-static constexpr Nimi        telo_n	(NOUN,	"telo");
-static constexpr syntax::Fragment telo(&telo_n);
-static constexpr Nimi        tenpo_n	(NOUN,	"tenpo");
-static constexpr syntax::Fragment tenpo(&tenpo_n);
-static constexpr Nimi        toki_n	(NOUN,	"toki");
-static constexpr syntax::Fragment toki(&toki_n);
-static constexpr Nimi        tomo_n	(NOUN,	"tomo");
-static constexpr syntax::Fragment tomo(&tomo_n);
-static constexpr Nimi        tu_n	(NOUN,	"tu");
-static constexpr syntax::Fragment tu(&tu_n);
-static constexpr Nimi        unpa_n	(NOUN,	"unpa");
-static constexpr syntax::Fragment unpa(&unpa_n);
-static constexpr Nimi        uta_n	(NOUN,	"uta");
-static constexpr syntax::Fragment uta(&uta_n);
-static constexpr Nimi        utala_n	(NOUN,	"utala");
-static constexpr syntax::Fragment utala(&utala_n);
-static constexpr Nimi        walo_n	(NOUN,	"walo");
-static constexpr syntax::Fragment walo(&walo_n);
-static constexpr Nimi        wan_n	(NOUN,	"wan");
-static constexpr syntax::Fragment wan(&wan_n);
-static constexpr Nimi        waso_n	(NOUN,	"waso");
-static constexpr syntax::Fragment waso(&waso_n);
-static constexpr Nimi        wawa_n	(NOUN,	"wawa");
-static constexpr syntax::Fragment wawa(&wawa_n);
-static constexpr Nimi        weka_n	(NOUN,	"weka");
-static constexpr syntax::Fragment weka(&weka_n);
-static constexpr Nimi        wile_n	(NOUN,	"wile");
+static constexpr Nimi   a	(NOUN,	"a");
 
-static_assert(a.getLeaf().type == NOUN, "notstatic constexpr");
+static constexpr Nimi   akesi	(NOUN,	"akesi");
+
+static constexpr Nimi   ala	(NOUN,	"ala");
+
+static constexpr Nimi   alasa	(NOUN,	"alasa");
+
+static constexpr Nimi   ale	(NOUN,	"ale");
+
+static constexpr Nimi   anpa	(NOUN,	"anpa");
+
+static constexpr Nimi   ante	(NOUN,	"ante");
+
+static constexpr Nimi   anu	(NOUN,	"anu");
+
+static constexpr Nimi   awen	(NOUN,	"awen");
+
+static constexpr Nimi   e	(NOUN,	"e");
+
+static constexpr Nimi   en	(NOUN,	"en");
+
+static constexpr Nimi   esun	(NOUN,	"esun");
+
+static constexpr Nimi   ijo	(NOUN,	"ijo");
+
+static constexpr Nimi   ike	(NOUN,	"ike");
+
+static constexpr Nimi   ilo	(NOUN,	"ilo");
+
+static constexpr Nimi   insa	(NOUN,	"insa");
+
+static constexpr Nimi   jaki	(NOUN,	"jaki");
+
+static constexpr Nimi   jan	(NOUN,	"jan");
+
+static constexpr Nimi   jelo	(NOUN,	"jelo");
+
+static constexpr Nimi   jo	(NOUN,	"jo");
+
+static constexpr Nimi   kala	(NOUN,	"kala");
+
+static constexpr Nimi   kalama	(NOUN,	"kalama");
+
+static constexpr Nimi   kama	(NOUN,	"kama");
+
+static constexpr Nimi   kasi	(NOUN,	"kasi");
+
+static constexpr Nimi   ken	(NOUN,	"ken");
+
+static constexpr Nimi   kepeken	(NOUN,	"kepeken");
+
+static constexpr Nimi   kili	(NOUN,	"kili");
+
+static constexpr Nimi   kin	(NOUN,	"kin");
+
+static constexpr Nimi   kiwen	(NOUN,	"kiwen");
+
+static constexpr Nimi   ko	(NOUN,	"ko");
+
+static constexpr Nimi   kon	(NOUN,	"kon");
+
+static constexpr Nimi   kule	(NOUN,	"kule");
+
+static constexpr Nimi   kulupu	(NOUN,	"kulupu");
+
+static constexpr Nimi   kute	(NOUN,	"kute");
+
+static constexpr Nimi   la	(NOUN,	"la");
+
+static constexpr Nimi   lape	(NOUN,	"lape");
+
+static constexpr Nimi   laso	(NOUN,	"laso");
+
+static constexpr Nimi   lawa	(NOUN,	"lawa");
+
+static constexpr Nimi   len	(NOUN,	"len");
+
+static constexpr Nimi   lete	(NOUN,	"lete");
+
+static constexpr Nimi   li	(NOUN,	"li");
+
+static constexpr Nimi   lili	(NOUN,	"lili");
+
+static constexpr Nimi   linja	(NOUN,	"linja");
+
+static constexpr Nimi   lipu	(NOUN,	"lipu");
+
+static constexpr Nimi   loje	(NOUN,	"loje");
+
+static constexpr Nimi   lon	(NOUN,	"lon");
+
+static constexpr Nimi   luka	(NOUN,	"luka");
+
+static constexpr Nimi   lukin	(NOUN,	"lukin");
+
+static constexpr Nimi   lupa	(NOUN,	"lupa");
+
+static constexpr Nimi   ma	(NOUN,	"ma");
+
+static constexpr Nimi   mama	(NOUN,	"mama");
+
+static constexpr Nimi   mani	(NOUN,	"mani");
+
+static constexpr Nimi   meli	(NOUN,	"meli");
+
+static constexpr Nimi   mi	(NOUN,	"mi");
+
+static constexpr Nimi   mije	(NOUN,	"mije");
+
+static constexpr Nimi   moku	(NOUN,	"moku");
+
+static constexpr Nimi   moli	(NOUN,	"moli");
+
+static constexpr Nimi   monsi	(NOUN,	"monsi");
+
+static constexpr Nimi   mu	(NOUN,	"mu");
+
+static constexpr Nimi   mun	(NOUN,	"mun");
+
+static constexpr Nimi   musi	(NOUN,	"musi");
+
+static constexpr Nimi   mute	(NOUN,	"mute");
+
+static constexpr Nimi   nanpa	(NOUN,	"nanpa");
+
+static constexpr Nimi   nasa	(NOUN,	"nasa");
+
+static constexpr Nimi   nasin	(NOUN,	"nasin");
+
+static constexpr Nimi   nena	(NOUN,	"nena");
+
+static constexpr Nimi   ni	(NOUN,	"ni");
+
+static constexpr Nimi   nimi	(NOUN,	"nimi");
+
+static constexpr Nimi   noka	(NOUN,	"noka");
+
+static constexpr Nimi   o	(NOUN,	"o");
+
+static constexpr Nimi   oko	(NOUN,	"oko");
+
+static constexpr Nimi   olin	(NOUN,	"olin");
+
+static constexpr Nimi   ona	(NOUN,	"ona");
+
+static constexpr Nimi   open	(NOUN,	"open");
+
+static constexpr Nimi   pakala	(NOUN,	"pakala");
+
+static constexpr Nimi   pali	(NOUN,	"pali");
+
+static constexpr Nimi   palisa	(NOUN,	"palisa");
+
+static constexpr Nimi   pan	(NOUN,	"pan");
+
+static constexpr Nimi   pana	(NOUN,	"pana");
+
+static constexpr Nimi   pi	(NOUN,	"pi");
+
+static constexpr Nimi   pilin	(NOUN,	"pilin");
+
+static constexpr Nimi   pimeja	(NOUN,	"pimeja");
+
+static constexpr Nimi   pini	(NOUN,	"pini");
+
+static constexpr Nimi   pipi	(NOUN,	"pipi");
+
+static constexpr Nimi   poka	(NOUN,	"poka");
+
+static constexpr Nimi   poki	(NOUN,	"poki");
+
+static constexpr Nimi   pona	(NOUN,	"pona");
+
+static constexpr Nimi   pu	(NOUN,	"pu");
+
+static constexpr Nimi   sama	(NOUN,	"sama");
+
+static constexpr Nimi   seli	(NOUN,	"seli");
+
+static constexpr Nimi   selo	(NOUN,	"selo");
+
+static constexpr Nimi   seme	(NOUN,	"seme");
+
+static constexpr Nimi   sewi	(NOUN,	"sewi");
+
+static constexpr Nimi   sijelo	(NOUN,	"sijelo");
+
+static constexpr Nimi   sike	(NOUN,	"sike");
+
+static constexpr Nimi   sin	(NOUN,	"sin");
+
+static constexpr Nimi   sina	(NOUN,	"sina");
+
+static constexpr Nimi   sinpin	(NOUN,	"sinpin");
+
+static constexpr Nimi   sitelen	(NOUN,	"sitelen");
+
+static constexpr Nimi   sona	(NOUN,	"sona");
+
+static constexpr Nimi   soweli	(NOUN,	"soweli");
+
+static constexpr Nimi   suli	(NOUN,	"suli");
+
+static constexpr Nimi   suno	(NOUN,	"suno");
+
+static constexpr Nimi   supa	(NOUN,	"supa");
+
+static constexpr Nimi   suwi	(NOUN,	"suwi");
+
+static constexpr Nimi   tan	(NOUN,	"tan");
+
+static constexpr Nimi   taso	(NOUN,	"taso");
+
+static constexpr Nimi   tawa	(NOUN,	"tawa");
+
+static constexpr Nimi   telo	(NOUN,	"telo");
+
+static constexpr Nimi   tenpo	(NOUN,	"tenpo");
+
+static constexpr Nimi   toki	(NOUN,	"toki");
+
+static constexpr Nimi   tomo	(NOUN,	"tomo");
+
+static constexpr Nimi   tu	(NOUN,	"tu");
+
+static constexpr Nimi   unpa	(NOUN,	"unpa");
+
+static constexpr Nimi   uta	(NOUN,	"uta");
+
+static constexpr Nimi   utala	(NOUN,	"utala");
+
+static constexpr Nimi   walo	(NOUN,	"walo");
+
+static constexpr Nimi   wan	(NOUN,	"wan");
+
+static constexpr Nimi   waso	(NOUN,	"waso");
+
+static constexpr Nimi   wawa	(NOUN,	"wawa");
+
+static constexpr Nimi   weka	(NOUN,	"weka");
+
+static constexpr Nimi   wile	(NOUN,	"wile");
+
+static_assert(a.type == NOUN, "notstatic constexpr");
 
 } //dictionary
 } //lang
