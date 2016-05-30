@@ -14,6 +14,7 @@ TEST(Fragment, ConstexprConstructInternal){
     constexpr auto akesi_awen = akesi + awen;
 
     static_assert(akesi_awen.getLhs() == akesi, "not constexpr");
+    static_assert(akesi_awen.getConj() == nullptr, "not constexpr");
     static_assert(akesi_awen.getRhs() == awen, "not constexpr");
 }
 
@@ -27,12 +28,24 @@ TEST(Fragment, ConstExprConstructDifferentTrees){
     static_assert( nimi_nimi_plus_nimi.getLhs().getLhs() == akesi, "not constexpr");
     static_assert( nimi_nimi_plus_nimi.getLhs().getRhs() == awen, "not constexpr");
     static_assert( nimi_nimi_plus_nimi.getRhs() == ante, "not constexpr");
+    static_assert( nimi_nimi_plus_nimi.getConj() == nullptr, "not constexpr");
     
     static_assert( nimi_plus_nimi_nimi.getLhs() == akesi, "not constexpr");
     static_assert( nimi_plus_nimi_nimi.getRhs().getLhs() == awen, "not constexpr");
     static_assert( nimi_plus_nimi_nimi.getRhs().getRhs() == ante, "not constexpr");
+    static_assert( nimi_plus_nimi_nimi.getConj() == nullptr, "not constexpr");
     
     static_assert( nimi_nimi_nimi.getLhs().getLhs() == akesi, "not constexpr");
     static_assert( nimi_nimi_nimi.getLhs().getRhs() == awen, "not constexpr");
     static_assert( nimi_nimi_nimi.getRhs() == ante, "not constexpr");
+    static_assert( nimi_nimi_nimi.getConj() == nullptr, "not constexpr");
+}
+
+TEST(Fragment, ConstExprConjunctive){
+    using namespace lang::dictionary;
+
+    constexpr auto akesi_li_awen = li(akesi, awen);
+    constexpr auto akesi_e_awen = e(akesi, awen);
+
+    constexpr auto akesi_li_awen_e_sina = e(li(akesi, awen), sina);
 }

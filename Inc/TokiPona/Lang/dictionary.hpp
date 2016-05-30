@@ -24,7 +24,7 @@ static constexpr Nimi   anu	(NOUN,	"anu");
 
 static constexpr Nimi   awen	(NOUN,	"awen");
 
-static constexpr Nimi   e	(NOUN,	"e");
+static constexpr Nimi   e_c	(NOUN,	"e");
 
 static constexpr Nimi   en	(NOUN,	"en");
 
@@ -86,7 +86,7 @@ static constexpr Nimi   len	(NOUN,	"len");
 
 static constexpr Nimi   lete	(NOUN,	"lete");
 
-static constexpr Nimi   li	(NOUN,	"li");
+static constexpr Nimi   li_c	(NOUN,	"li");
 
 static constexpr Nimi   lili	(NOUN,	"lili");
 

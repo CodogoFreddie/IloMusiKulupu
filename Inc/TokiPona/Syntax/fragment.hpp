@@ -4,6 +4,7 @@
 #include <string>
 
 #include <TokiPona/Lang/nimi.hpp>
+#include <TokiPona/Lang/dictionary.hpp>
 
 namespace tokipona {
 namespace syntax {
@@ -36,8 +37,15 @@ public:
 	rhs(rhs_){}
 
     constexpr const LHS& getLhs() const {return lhs;}
-    constexpr const lang::Nimi& getConj() const {return *conjunctive;}
+    constexpr const lang::Nimi* getConj() const {return conjunctive;}
     constexpr const RHS& getRhs() const {return rhs;}
+
+    template<typename LI_RHS>
+	constexpr const Fragment<Fragment<LHS, RHS>, LI_RHS>
+	li(LI_RHS rhs_) const {
+	    return Fragment<Fragment<LHS, RHS>, LI_RHS>(
+		    *this, rhs_);
+	}
 };
 
 constexpr Fragment<const lang::Nimi&, const lang::Nimi&>
@@ -69,6 +77,18 @@ constexpr Fragment<Fragment<LL,LR>, Fragment<RL,RR>>
 	operator+(const Fragment<LL,LR>& lhs, const Fragment<RL,RR>& rhs){
 
     return Fragment<Fragment<LL,LR>, Fragment<RL,RR>>(lhs, rhs);
+}
+
+constexpr Fragment<const lang::Nimi&, const lang::Nimi&>
+	li(const lang::Nimi& lhs, const lang::Nimi& rhs){
+    return Fragment<const lang::Nimi&,
+		    const lang::Nimi&>(lhs, lang::dictionary::li_c, rhs);
+}
+
+constexpr Fragment<const lang::Nimi&, const lang::Nimi&>
+	e(const lang::Nimi& lhs, const lang::Nimi& rhs){
+    return Fragment<const lang::Nimi&,
+		    const lang::Nimi&>(lhs, lang::dictionary::e_c, rhs);
 }
 
 } //syntax

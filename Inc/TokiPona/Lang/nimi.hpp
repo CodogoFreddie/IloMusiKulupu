@@ -5,6 +5,13 @@
 #include <Core/hashedString.hpp>
 
 namespace tokipona {
+
+namespace syntax{
+template<   typename LHS,
+	    typename RHS>
+    class Fragment;
+}
+
 namespace lang {
 
 typedef enum NimiType{
