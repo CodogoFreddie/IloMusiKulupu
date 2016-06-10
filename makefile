@@ -1,5 +1,5 @@
 CC = clang++
-INCLUDEPATHS = -I./Inc
+INCLUDEPATHS = -I./Inc -I./Repos/FredLib/Inc
 COMPILEFLAGS = -std=gnu++11 -Wall -pthread -g 
 EXE_NAME = IloMusiKulupu.out
 TESTS_EXE_NAME = test
