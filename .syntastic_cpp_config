@@ -1,7 +1,7 @@
 -I./Inc
--I../gtest/googletest/include
--I../gtest/googlemock/include
--I../rapidjson/include
+-I./Repos/FredLib/Inc
+-I./Repos/gtest/googletest/include
+-I./Repos/gtest/googlemock/include
 -std=gnu++11
 -pthread
 -g

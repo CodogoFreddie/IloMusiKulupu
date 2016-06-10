@@ -45,7 +45,8 @@ TEST(Fragment, ConstExprConjunctive){
     using namespace lang::dictionary;
 
     constexpr auto akesi_li_awen = li(akesi, awen);
-    constexpr auto akesi_e_awen = e(akesi, awen);
 
-    constexpr auto akesi_li_awen_e_sina = e(li(akesi, awen), sina);
+    static_assert(akesi_li_awen.getLhs() == akesi, "not constexpr");
+    static_assert(akesi_li_awen.getConj() == &li_c, "not constexpr");
+    static_assert(akesi_li_awen.getRhs() == awen, "not constexpr");
 }
