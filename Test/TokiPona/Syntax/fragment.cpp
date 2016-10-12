@@ -8,8 +8,7 @@
 using namespace tokipona;
 using namespace syntax;
 
-TEST(Fragment, ConstexprConstructInternal)
-{
+TEST(Fragment, ConstexprConstructInternal) {
     using namespace lang::dictionary;
 
     constexpr auto akesi_awen = akesi + awen;
@@ -19,8 +18,7 @@ TEST(Fragment, ConstexprConstructInternal)
     // static_assert(akesi_awen.getRhs() == awen, "not constexpr");
 }
 
-TEST(Fragment, ConstExprConstructDifferentTrees)
-{
+TEST(Fragment, ConstExprConstructDifferentTrees) {
     using namespace lang::dictionary;
 
     constexpr auto nimi_nimi_plus_nimi = (akesi + awen) + ante;
@@ -51,8 +49,7 @@ TEST(Fragment, ConstExprConstructDifferentTrees)
     // static_assert( nimi_nimi_nimi.getConj() == nullptr, "not constexpr");
 }
 
-TEST(Fragment, ConstExprConjunctive)
-{
+TEST(Fragment, ConstExprConjunctive) {
     using namespace lang::dictionary;
 
     constexpr auto akesi_li_awen = li(akesi, awen);

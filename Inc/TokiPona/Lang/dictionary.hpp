@@ -2,12 +2,9 @@
 
 #include <TokiPona/Lang/nimi.hpp>
 
-namespace tokipona
-{
-namespace lang
-{
-namespace dictionary
-{
+namespace tokipona {
+namespace lang {
+namespace dictionary {
 
 static constexpr Nimi a(NOUN, "a");
 
