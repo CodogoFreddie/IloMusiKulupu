@@ -16,7 +16,7 @@ typedef enum NimiType {
     NOUN,
     VERB,
     ADJECTIVE,
-	PREPOSITION,
+    PREPOSITION,
     CONJUNCTIVE,
 } NimiType;
 

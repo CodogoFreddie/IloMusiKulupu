@@ -1,9 +1,0 @@
--I./Inc
--I./Repos/FredLib/Inc
--I./Repos/gtest/googletest/include
--I./Repos/gtest/googlemock/include
--std=gnu++11
--pthread
--g
--c
--pg

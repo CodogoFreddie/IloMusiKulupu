@@ -3,7 +3,7 @@
 pushd Dependencies
 
 echo "gtest"
-git clone git@github.com:google/googletest.git
+git clone git@github.com:google/googletest.git --depth=1
 pushd googletest
 	pushd googletest
 		cmake .
@@ -16,5 +16,4 @@ pushd googletest
 popd
 
 echo "FredLib"
-git clone git@github.com:CodogoFreddie/FredLib.git
-
+git clone git@github.com:CodogoFreddie/FredLib.git --depth=1
