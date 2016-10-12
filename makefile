@@ -1,6 +1,15 @@
 CC = clang++
-INCLUDEPATHS = -I./Inc -I./Repos/FredLib/Inc
-COMPILEFLAGS = -std=gnu++11 -Wall -pthread -g 
+INCLUDEPATHS = -I./Inc \
+			   -I./Dependencies/FredLib/Inc 
+
+TEST_INCLUDE_PATHS = -I./Dependencies/googletest/googletest/include \
+					-I./Dependencies/googletest/googlemock/include
+
+TEST_LINK_PATHS = ./Dependencies/googletest/googletest/libgtest.a \
+				./Dependencies/googletest/googlemock/libgmock.a
+
+COMPILEFLAGS = -std=gnu++11 -Wall -pthread -g
+
 EXE_NAME = IloMusiKulupu.out
 TESTS_EXE_NAME = test
 
@@ -33,13 +42,12 @@ $(EXE_NAME): $(DEPENDANCY_FILES) $(CPP_UNITS)
 	$(COMPILEFLAGS) \
 	-o $(EXE_NAME)
 
-$(TESTS_EXE_NAME): $(DEPENDANCY_FILES) $(EXE_NAME) $(TEST_UNITS) $(GTEST_LIBRARY) $(GMOCK_LIBRARY)
+$(TESTS_EXE_NAME): $(DEPENDANCY_FILES) $(EXE_NAME) $(TEST_UNITS)
 	@ echo "Compiling test runtime"
 	@ $(CC) \
 	$(TEST_UNITS) \
 	$(filter-out Src/main.o, $(CPP_UNITS)) \
-	$(GTEST_LIBRARY) \
-	$(GMOCK_LIBRARY) \
+	$(TEST_LINK_PATHS) \
 	$(INCLUDEPATHS) \
 	-I$(GTEST_HEADER) \
 	-I$(GMOCK_HEADER) \

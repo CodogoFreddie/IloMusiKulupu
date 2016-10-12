@@ -7,4 +7,3 @@ using namespace tokipona;
 using namespace lang;
 
 TEST(WORD, FailTest){EXPECT_TRUE(false);}
-
