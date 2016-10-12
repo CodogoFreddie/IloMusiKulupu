@@ -1,5 +1,4 @@
-#include<TokiPona/Syntax/fragment.hpp>
+#include <TokiPona/Syntax/fragment.hpp>
 
 using namespace tokipona;
 using namespace syntax;
-

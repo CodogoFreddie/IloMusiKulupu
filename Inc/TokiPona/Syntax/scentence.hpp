@@ -2,12 +2,14 @@
 
 #include <Core/idManager.hpp>
 
-namespace tokipona {
-namespace syntax {
+namespace tokipona
+{
+namespace syntax
+{
 
-class Scentence{
-
+class Scentence
+{
 };
 
-} //syntax
-} //tokipona
+} // syntax
+} // tokipona
