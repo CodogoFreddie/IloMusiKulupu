@@ -1,11 +1,11 @@
-Src/%.o: Src/%.cpp
+Src/%.o: Src/%.cpp $(FRED_LIB_MARKER)
 	@ echo "Compling Source: $<"
 	@ $(CC) -c $< \
 	$(INCLUDEPATHS) \
 	$(COMPILEFLAGS) \
 	-o $@ 
 
-Test/%.o: Test/%.cpp
+Test/%.o: Test/%.cpp 
 	@ echo "Compiling Test: $<"
 	@ $(CC) -c $< \
 	$(INCLUDEPATHS) \
@@ -13,7 +13,7 @@ Test/%.o: Test/%.cpp
 	$(COMPILEFLAGS) \
 	-o $@ 
 
-%.d: %.cpp
+%.d: %.cpp 
 	@ echo "Generating Dependancy File For: $<"
 	@ $(CC) -c $< \
 	$(INCLUDEPATHS) \
