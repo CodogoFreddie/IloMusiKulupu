@@ -51,12 +51,11 @@ private:
 	GLuint vbos[3];
 	GLuint vaos[3];
 
-
 	void loadPositions();
+	void loadColors();
 
 public:
 	Mesh();
-
 
 	GENERATE_GETTERS_AND_SETTERS(positions);
 	GENERATE_GETTERS_AND_SETTERS(colors);

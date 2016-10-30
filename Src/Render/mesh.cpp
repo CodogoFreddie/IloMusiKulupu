@@ -12,49 +12,85 @@ Mesh::Mesh(){
 		core::math::cartesian::CartTwo<>
 	>(
 		{
-			{ 0.0f,  0.5f,},// Vertex 1 (X, Y)
-			{ 0.5f, -0.5f,},// Vertex 2 (X, Y)
-			{-0.5f, -0.5f,},// Vertex 3 (X, Y)
+			{ 1.0f,  1.0f,},// Vertex 2 (X, Y)
+			{ 1.0f, -1.0f,},// Vertex 1 (X, Y)
+			{-1.0f, -1.0f,},// Vertex 3 (X, Y)
+			{ 1.0f,  1.0f,},// Vertex 2 (X, Y)
+			{-1.0f,  1.0f,},// Vertex 1 (X, Y)
+			{-1.0f, -1.0f,},// Vertex 3 (X, Y)
+		}
+	 );
+
+	colors_= std::vector<
+		core::math::cartesian::CartThree<>
+	>(
+		{
+			{ 1.0f, 0.0f, 0.0f, },
+			{ 0.0f, 1.0f, 0.0f, },
+			{ 0.0f, 0.0f, 1.0f, },
+			{ 1.0f, 0.0f, 0.0f, },
+			{ 0.0f, 1.0f, 0.0f, },
+			{ 0.0f, 0.0f, 1.0f, },
 		}
 	 );
 };
 
 void Mesh::loadPositions(){
-}
-
-void Mesh::render(){
-	auto& engine = Engine::get();
-	auto programToken_ = engine.getProgram(program_).programToken();
-
-    GLfloat vertices[] = {
-         0.0f,  0.5f,
-         0.5f, -0.5f,
-        -0.5f, -0.5f
-    };
 
 	glBindBuffer(GL_ARRAY_BUFFER, vbos[0]);
+
 	glBufferData(
 		GL_ARRAY_BUFFER,
-		sizeof(vertices),
-		vertices,
+		sizeof(positions_[0].data()) * 3 * positions_.size(),
+		positions_.data(),
 		GL_STATIC_DRAW
 	);
 
-	glUseProgram(programToken_);
+	GLint attributePosition = glGetAttribLocation(programToken_, "position");
 
-	GLint posAttrib = glGetAttribLocation(programToken_, "position");
-
-	glEnableVertexAttribArray(posAttrib);
+	glEnableVertexAttribArray(attributePosition);
 	glVertexAttribPointer(
-		posAttrib,
+		attributePosition,
 		2,
 		GL_FLOAT,
 		GL_FALSE,
 		0,
 		0
 	);
+}
 
-	glDrawArrays(GL_TRIANGLES, 0, 3);
+void Mesh::loadColors(){
+	glBindBuffer(GL_ARRAY_BUFFER, vbos[1]);
+	glBufferData(
+		GL_ARRAY_BUFFER,
+		sizeof(colors_[0].data()) * 3 * colors_.size(),
+		colors_.data(),
+		GL_STATIC_DRAW
+	);
+
+	GLint attributePosition = glGetAttribLocation(programToken_, "color");
+
+	glEnableVertexAttribArray(attributePosition);
+	glVertexAttribPointer(
+		attributePosition,
+		3,
+		GL_FLOAT,
+		GL_FALSE,
+		0,
+		0
+	);
+}
+
+void Mesh::render(){
+	auto& engine = Engine::get();
+	programToken_ = engine.getProgram(program_).programToken();
+
+	glUseProgram(programToken_);
+
+	loadPositions();
+	loadColors();
+
+	glDrawArrays(GL_TRIANGLES, 0, 6);
 };
 
 void Mesh::reset(){
