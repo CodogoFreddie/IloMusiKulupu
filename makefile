@@ -1,6 +1,8 @@
 CC = clang++
 INCLUDEPATHS = -I./Inc \
-			   -I./Dependencies/FredLib/Inc
+			   -I./Dependencies/FredLib/Inc \
+			   -I/usr/include/SDL2 \
+			   -I/usr/include/GL -I/usr/include/libdrm 
 
 COMPILEFLAGS = -std=gnu++14 -Wall -pthread -g
 PROJECTNAME = FreddieLib
@@ -15,7 +17,13 @@ TEST_OBJECTS = \
 			   ./Dependencies/googletest/googletest/libgtest.a \
 			   ./Dependencies/googletest/googlemock/libgmock.a
 
-COMPILEFLAGS = -std=gnu++14 -Wall -pthread -g
+COMPILEFLAGS = -std=gnu++14 \
+			   -Wall \
+			   -pthread \
+			   -g \
+
+LINK_LIBS = -lSDL2 \
+			-lGLEW -lGLU -lGL
 
 # cpp source files and compiled objects
 CPP_SRC = $(shell find Src -name "*.cpp")
@@ -46,6 +54,7 @@ include $(MAKEFILES)
 $(EXE_NAME): $(CPP_UNITS)
 	@ echo "Compiling main runtime"
 	@ $(CC) $(CPP_UNITS) \
+		$(LINK_LIBS) \
 		$(INCLUDEPATHS) \
 		$(COMPILEFLAGS) \
 		-o $(EXE_NAME)
@@ -53,6 +62,7 @@ $(EXE_NAME): $(CPP_UNITS)
 $(TESTS_EXE_NAME): $(EXE_NAME) $(TEST_UNITS) 
 	@ echo "Compiling test runtime"
 	@ $(CC) \
+		$(LINK_LIBS) \
 		$(TEST_UNITS) \
 		$(filter-out Src/main.o, $(CPP_UNITS)) \
 		$(TEST_OBJECTS) \
