@@ -4,7 +4,13 @@ using namespace render;
 
 Engine::Engine(int width_, int height_):
 		width(width_),
-		height(height_)
+		height(height_),
+		projectionMatrix_(
+			glm::perspective(glm::radians(90.0f),
+			(float)width_ / (float)height_,
+			0.01f,
+			1000.0f)
+		)
 {
 	SDL_Init(SDL_INIT_EVERYTHING);
 	SDL_Init(SDL_INIT_VIDEO);
@@ -15,18 +21,20 @@ Engine::Engine(int width_, int height_):
 	SDL_GL_SetAttribute(SDL_GL_STENCIL_SIZE, 8);
 
 	window = SDL_CreateWindow(
-			"OpenGL",
-			0,
-			0,
-			width,
-			height,
-			SDL_WINDOW_OPENGL
-			);
+		"OpenGL",
+		0,
+		0,
+		width,
+		height,
+		SDL_WINDOW_OPENGL
+	);
 
 
 	context = SDL_GL_CreateContext(window);
 	SDL_GL_MakeCurrent(window, context);
 
+	glEnable(GL_DEPTH_TEST);
+	
 	glewExperimental = GL_TRUE;
 
 	glewInit();
@@ -46,7 +54,7 @@ bool Engine::render(long deltaTime){
 
 	// Clear the screen to black
 	glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
-	glClear(GL_COLOR_BUFFER_BIT);
+	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
 	for(auto meshID : meshIDM.getActiveIDs()){
 		meshs_[meshID].render();
@@ -124,4 +132,3 @@ Program& Engine::getProgram(const core::ID id){
 void Engine::eraseProgram(const core::ID id){
 	programs_.erase(id);
 }
-

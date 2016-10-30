@@ -33,8 +33,12 @@ private:
 	std::map<core::ID, Scene> scenes_;
 	core::IDManager sceneIDM;
 
+	core::ID currentCamera_;
+
 	const int width;
 	const int height;
+
+	glm::mat4 projectionMatrix_;
 
 	SDL_Window* window;
 	SDL_GLContext context;
@@ -65,6 +69,11 @@ public:
 	const core::ID createProgram();
 	Program& getProgram(const core::ID id);
 	void eraseProgram(const core::ID id);
+
+	GENERATE_GETTERS_AND_SETTERS(currentCamera);
+
+	Engine& setFieldOfView(const unsigned int);
+	GENERATE_GETTER(projectionMatrix);
 
 	bool render(long deltaTime);
 

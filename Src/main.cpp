@@ -9,9 +9,11 @@ int main() {
 	auto basicProgram = re.createProgram();
 
 	re.getCamera(cameraID)
-		.position({-5,0,0})
+		.position({-7, -5, 5})
 		.lookingAt({0,0,0})
 		.scene(sceneID);
+
+	re.currentCamera(cameraID);
 
 	re.getProgram(basicProgram)
 		.vertexFileName("Src/GLSL/vertexShader.glsl")
