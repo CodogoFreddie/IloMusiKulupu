@@ -11,3 +11,5 @@ Repos/*
 *.d
 test
 Dependencies
+*.obj
+*.mtl
