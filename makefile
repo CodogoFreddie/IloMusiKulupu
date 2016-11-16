@@ -28,14 +28,16 @@ LINK_LIBS = -lSDL2 \
 # cpp source files and compiled objects
 CPP_SRC = $(shell find Src -name "*.cpp")
 TEST_SRC = $(shell find Test -name "*.cpp")
+OBJ_SRC = $(shell find Blend -name "*.blend")
 
 CPP_UNITS = $(CPP_SRC:%.cpp=%.o)
 TEST_UNITS = $(TEST_SRC:%.cpp=%.o)
+OBJ_UNITS = $(OBJ_SRC:%.blend=%_0.obj)
 
 MAKEFILES = $(shell find Makefiles -name "*.makefile")
 DEPENDANCY_FILES = $(CPP_SRC:%.cpp=%.d) $(TEST_SRC:%.cpp=%.d)
 
-all: $(EXE_NAME)
+all: $(EXE_NAME) $(OBJ_UNITS)
 
 test: $(TESTS_EXE_NAME)
 
@@ -73,4 +75,4 @@ $(TESTS_EXE_NAME): $(EXE_NAME) $(TEST_UNITS)
 		-o $(TESTS_EXE_NAME)
 
 clean:
-	rm -rf $(CPP_UNITS) $(TEST_UNITS) $(DEPENDANCY_FILES)
+	rm -rf $(CPP_UNITS) $(TEST_UNITS) $(DEPENDANCY_FILES) **/*.obj **/*.mtl

@@ -21,3 +21,7 @@ Test/%.o: Test/%.cpp
 	$(COMPILEFLAGS) \
 	-MM -MT $(subst .d,.o,$@) \
 	-MF $@
+
+%_0.obj: %.blend
+	@ echo "Exporting .obj from blend $<"
+	@ blender -b $< -P Scripts/exportBlendAtResolition.py

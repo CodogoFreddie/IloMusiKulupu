@@ -1,25 +1,40 @@
 import bpy
+import sys
+import os
 
-for i in range(20):
-    bpy.context.scene.layers[i] = True
+try:
+    os.mkdirs("Build/Obj")
+except:
+    False
 
-for ob in bpy.data.objects:
-    ob.select = True
-    print(ob.name, ob.select)
+print(bpy.data.filepath)
 
-for ob in bpy.data.objects:
-    print(ob.name, ob.select)
+path = bpy.data.filepath.split('/')
+filename = path[-1].replace(".blend", "")
+path = path[:-1]
 
-bpy.data.objects["Tree_1"].select = False
-bpy.data.objects["Tree_2"].select = True
+def outputPath(i):
+    return "/".join(path + [filename + "_" + str(i - 1) + ".obj"]) 
 
-for ob in bpy.data.objects:
-    print(ob.name, ob.select)
+print(outputPath(2))
 
-bpy.ops.object.select_pattern(pattern="Leaf")
+for layer in range(20):
+    bpy.context.scene.layers[layer] = True
 
-# bpy.ops.export_scene.obj(
-        # filepath = "./foo.obj",
-        # use_selection = True)
+for resolution in range(1, 20):
+    numberOfObjs = 0
+    for ob in bpy.data.objects:
+        if "_" + str(resolution) in ob.name:
+            ob.select = True
+            numberOfObjs = numberOfObjs + 1
+        else:
+            ob.select = False
 
-print("selected", bpy.context.selected_objects)
+    if numberOfObjs == 0:
+        break
+
+    print("number", numberOfObjs, "on", resolution)
+
+    bpy.ops.export_scene.obj(
+            filepath = outputPath(resolution),
+            use_selection = True)
