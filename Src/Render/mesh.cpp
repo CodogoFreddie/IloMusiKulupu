@@ -61,6 +61,63 @@ Mesh::Mesh():
 
 };
 
+Mesh& Mesh::loadFromFile(const std::string filename){
+	filename_ = filename;
+
+    Assimp::Importer importer;
+
+	const aiScene* pScene = importer.ReadFile(
+		filename.c_str(),
+		aiProcess_Triangulate
+		| aiProcess_GenSmoothNormals
+		| aiProcess_FlipUVs
+		| aiProcess_JoinIdenticalVertices
+	);
+
+    if (pScene) {
+		positions_.clear();
+		//colors_.clear();
+		//normals_.clear();
+		//faces_.clear();
+		
+		int vertIndexOffset = 0;
+
+		for(int meshI = 0; meshI < pScene->mNumMeshes; meshI++){
+			const auto mesh = pScene->mMeshes[meshI];
+
+			const auto vertPos = mesh->mVertices;
+			const auto vertPosN = mesh-> mNumVertices;
+			for(int vertPosI = 0; vertPosI < vertPosN; vertPosI++){
+				const auto vert = vertPos[vertPosI];
+				positions_.push_back({vert.x, vert.y, vert.z,});
+			}
+
+			const auto faces = mesh->mFaces;
+			const auto facesN = mesh->mNumFaces;
+			for(int faceI = 0; faceI < facesN; faceI++){
+				const auto face = faces[faceI];
+				const auto points = face.mIndices;
+				faces_.push_back({
+					points[0] + vertIndexOffset,
+					points[1] + vertIndexOffset,
+					points[2] + vertIndexOffset,
+				});
+			}
+
+			std::cout << mesh->HasFaces() << ','
+				<< mesh->HasNormals() << ','
+				<< mesh->HasPositions() << std::endl;
+
+			vertIndexOffset += vertPosN;
+		}
+    }
+    else {
+        printf("Error parsing '%s': '%s'\n", filename.c_str(), importer.GetErrorString());
+    }
+
+	return *this;
+}
+
 void Mesh::loadPositions(){
 
 	glBindBuffer(GL_ARRAY_BUFFER, vbos[0]);

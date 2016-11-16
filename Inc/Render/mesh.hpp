@@ -17,6 +17,10 @@
 #include <glm/gtc/matrix_transform.hpp>
 #include <glm/gtc/type_ptr.hpp>
 
+#include <assimp/Importer.hpp>      // C++ importer interface
+#include <assimp/scene.h>           // Output data structure
+#include <assimp/postprocess.h>     // Post processing flags
+
 namespace render{
 class Mesh;
 class Engine;
@@ -67,6 +71,8 @@ private:
 	glm::mat4 modelMatrix;
 	glm::mat4 mvpMatrix;
 
+	std::string filename_;
+
 	void loadPositions();
 	void loadColors();
 	void loadFaces();
@@ -75,6 +81,8 @@ private:
 
 public:
 	Mesh();
+
+	Mesh& loadFromFile(const std::string filename);
 
 	GENERATE_GETTERS_AND_SETTERS(positions);
 	GENERATE_GETTERS_AND_SETTERS(colors);

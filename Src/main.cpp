@@ -9,8 +9,8 @@ int main() {
 	auto basicProgram = re.createProgram();
 
 	re.getCamera(cameraID)
-		.position({-7, -5, 5})
-		.lookingAt({0,0,0})
+		.position({-4, -4, 10})
+		.lookingAt({0,0,4})
 		.scene(sceneID);
 
 	re.currentCamera(cameraID);
@@ -21,6 +21,7 @@ int main() {
 		.compile();
 
 	re.getMesh(meshID)
+		.loadFromFile("Blend/tree_01_0.obj")
 		.program(basicProgram);
 
 	using namespace std::chrono;

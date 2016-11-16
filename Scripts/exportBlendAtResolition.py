@@ -37,4 +37,6 @@ for resolution in range(1, 20):
 
     bpy.ops.export_scene.obj(
             filepath = outputPath(resolution),
+            axis_forward='X',
+            axis_up='Z',
             use_selection = True)

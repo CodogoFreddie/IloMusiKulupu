@@ -23,25 +23,26 @@ COMPILEFLAGS = -std=gnu++14 \
 			   -g \
 
 LINK_LIBS = -lSDL2 \
-			-lGLEW -lGLU -lGL
+			-lGLEW -lGLU -lGL \
+			-lassimp
 
 # cpp source files and compiled objects
 CPP_SRC = $(shell find Src -name "*.cpp")
 TEST_SRC = $(shell find Test -name "*.cpp")
-OBJ_SRC = $(shell find Blend -name "*.blend")
+MESH_SRC = $(shell find Blend -name "*.blend")
 
 CPP_UNITS = $(CPP_SRC:%.cpp=%.o)
 TEST_UNITS = $(TEST_SRC:%.cpp=%.o)
-OBJ_UNITS = $(OBJ_SRC:%.blend=%_0.obj)
+MESH_UNITS = $(MESH_SRC:%.blend=%_0.obj)
 
 MAKEFILES = $(shell find Makefiles -name "*.makefile")
 DEPENDANCY_FILES = $(CPP_SRC:%.cpp=%.d) $(TEST_SRC:%.cpp=%.d)
 
-all: $(EXE_NAME) $(OBJ_UNITS)
+all: $(EXE_NAME)
 
 test: $(TESTS_EXE_NAME)
 
-run: $(EXE_NAME)
+run: $(EXE_NAME) $(MESH_UNITS)
 	./$(EXE_NAME)
 
 runTest: $(TESTS_EXE_NAME)
