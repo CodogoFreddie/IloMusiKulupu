@@ -27,6 +27,21 @@ Mesh::Mesh():
 				}
 		 );
 
+	normals_ = std::vector<
+		core::math::cartesian::CartThree<>
+		>(
+				{
+				{ 1.0f,  1.0f,  1.0f, },
+				{-1.0f,  1.0f,  1.0f, },
+				{ 1.0f, -1.0f,  1.0f, },
+				{ 1.0f,  1.0f, -1.0f, },
+				{-1.0f, -1.0f, -1.0f, },
+				{ 1.0f, -1.0f, -1.0f, },
+				{-1.0f,  1.0f, -1.0f, },
+				{-1.0f, -1.0f,  1.0f, },
+				}
+		 );
+
 	colors_= std::vector<
 		core::math::cartesian::CartThree<>
 		>(
@@ -158,8 +173,32 @@ void Mesh::loadPositions(){
 			);
 }
 
-void Mesh::loadColors(){
+void Mesh::loadNormals(){
+
 	glBindBuffer(GL_ARRAY_BUFFER, vbos[1]);
+
+	glBufferData(
+			GL_ARRAY_BUFFER,
+			sizeof(normals_[0].data()) * 3 * normals_.size(),
+			normals_.data(),
+			GL_STATIC_DRAW
+			);
+
+	GLint attributeNormal = glGetAttribLocation(programToken_, "normal");
+
+	glEnableVertexAttribArray(attributeNormal);
+	glVertexAttribPointer(
+			attributeNormal,
+			3,
+			GL_FLOAT,
+			GL_FALSE,
+			0,
+			0
+			);
+}
+
+void Mesh::loadColors(){
+	glBindBuffer(GL_ARRAY_BUFFER, vbos[2]);
 	glBufferData(
 			GL_ARRAY_BUFFER,
 			sizeof(colors_[0].data()) * 3 * colors_.size(),
@@ -215,6 +254,7 @@ void Mesh::render(){
 
 	loadPositions();
 	loadColors();
+	loadNormals();
 	loadFaces();
 
 	calculateMVP();

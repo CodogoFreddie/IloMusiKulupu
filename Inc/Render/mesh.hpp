@@ -76,6 +76,7 @@ private:
 	void loadPositions();
 	void loadColors();
 	void loadFaces();
+	void loadNormals();
 
 	void calculateMVP();
 

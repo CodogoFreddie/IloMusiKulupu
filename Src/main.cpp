@@ -9,7 +9,7 @@ int main() {
 	auto basicProgram = re.createProgram();
 
 	re.getCamera(cameraID)
-		.position({-4, -4, 10})
+		.position({-4, -4, 2})
 		.lookingAt({0,0,4})
 		.scene(sceneID);
 
