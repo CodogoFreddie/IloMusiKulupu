@@ -24,6 +24,9 @@ int main() {
 		.loadFromFile("Blend/tree_01_0.obj")
 		.program(basicProgram);
 
+	re.getScene(sceneID)
+		.addMesh(meshID);
+
 	using namespace std::chrono;
 	long now = duration_cast<milliseconds>(
 		steady_clock::now().time_since_epoch()

@@ -71,6 +71,9 @@ public:
 	void eraseProgram(const core::ID id);
 
 	GENERATE_GETTERS_AND_SETTERS(currentCamera);
+	const core::ID currentScene(){
+		return cameras_[currentCamera_].scene();
+	};
 
 	Engine& setFieldOfView(const unsigned int);
 	GENERATE_GETTER(projectionMatrix);

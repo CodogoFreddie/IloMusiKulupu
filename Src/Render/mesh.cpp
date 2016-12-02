@@ -2,8 +2,7 @@
 
 using namespace render;
 
-Mesh::Mesh():
-	engine(&Engine::get())
+Mesh::Mesh()
 {
 	glGenVertexArrays(1, &vao);
 	glBindVertexArray(vao);
@@ -229,11 +228,20 @@ void Mesh::loadFaces(){
 			);
 };
 
+void Mesh::loadLights(){
+	const auto currentSceneID = Engine::get().currentScene();
+	auto currentScene = Engine::get().getScene(currentSceneID);
+
+	GLint sunPosToken = glGetUniformLocation(programToken_, "sunPos");
+	const auto sunPos = currentScene.sunPos();
+	glUniform3f(sunPosToken, sunPos.x(), sunPos.y(), sunPos.z());
+};
+
 void Mesh::calculateMVP(){
 	GLint mvpToken = glGetUniformLocation(programToken_, "mvp");
 
-	auto viewMatrix = engine->getCamera( engine->currentCamera() ).viewMatrix();
-	auto projectionMatrix = engine->projectionMatrix();
+	auto viewMatrix = Engine::get().getCamera( Engine::get().currentCamera() ).viewMatrix();
+	auto projectionMatrix = Engine::get().projectionMatrix();
 
 	modelMatrix = glm::rotate(modelMatrix, glm::radians(1.0f), glm::vec3(0,0,1));
 
@@ -248,7 +256,7 @@ void Mesh::calculateMVP(){
 }
 
 void Mesh::render(){
-	programToken_ = engine->getProgram(program_).programToken();
+	programToken_ = Engine::get().getProgram(program_).programToken();
 
 	glUseProgram(programToken_);
 
@@ -256,6 +264,8 @@ void Mesh::render(){
 	loadColors();
 	loadNormals();
 	loadFaces();
+
+	loadLights();
 
 	calculateMVP();
 

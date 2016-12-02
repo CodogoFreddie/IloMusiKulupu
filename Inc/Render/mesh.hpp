@@ -40,7 +40,6 @@ typedef core::math::cartesian::CartThree<GLfloat> point;
 
 class Mesh{
 private:
-	Engine* engine;
 	std::vector<
 		core::math::cartesian::CartThree<>
 	> positions_;
@@ -77,6 +76,8 @@ private:
 	void loadColors();
 	void loadFaces();
 	void loadNormals();
+
+	void loadLights();
 
 	void calculateMVP();
 
