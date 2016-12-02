@@ -74,22 +74,38 @@ Mesh& Mesh::loadFromFile(const std::string filename){
 		| aiProcess_JoinIdenticalVertices
 	);
 
+	std::cout << "num of mats: " << pScene->mNumMaterials << std::endl;
+
+	const auto materials = pScene->mMaterials;
+
     if (pScene) {
 		positions_.clear();
-		//colors_.clear();
-		//normals_.clear();
-		//faces_.clear();
+		colors_.clear();
+		normals_.clear();
+		faces_.clear();
 		
 		int vertIndexOffset = 0;
 
 		for(int meshI = 0; meshI < pScene->mNumMeshes; meshI++){
 			const auto mesh = pScene->mMeshes[meshI];
 
-			const auto vertPos = mesh->mVertices;
-			const auto vertPosN = mesh-> mNumVertices;
-			for(int vertPosI = 0; vertPosI < vertPosN; vertPosI++){
-				const auto vert = vertPos[vertPosI];
-				positions_.push_back({vert.x, vert.y, vert.z,});
+			const auto vertN = mesh->mNumVertices;
+			const auto materialI = mesh->mMaterialIndex;
+			const auto material = materials[materialI];
+
+			aiColor3D color (0.f,0.f,0.f);
+			material->Get(AI_MATKEY_COLOR_DIFFUSE,color);
+
+			const auto vertPoss = mesh->mVertices;
+			const auto vertNors= mesh->mNormals;
+			for(int vertI = 0; vertI < vertN; vertI++){
+				const auto pos = vertPoss[vertI];
+				positions_.push_back({pos.x, pos.y, pos.z,});
+
+				const auto nor = vertNors[vertI];
+				normals_.push_back({nor.x, nor.y, nor.z,});
+
+				colors_.push_back({color.r, color.g, color.b,});
 			}
 
 			const auto faces = mesh->mFaces;
@@ -98,22 +114,22 @@ Mesh& Mesh::loadFromFile(const std::string filename){
 				const auto face = faces[faceI];
 				const auto points = face.mIndices;
 				faces_.push_back({
-					points[0] + vertIndexOffset,
-					points[1] + vertIndexOffset,
-					points[2] + vertIndexOffset,
-				});
+						points[0] + vertIndexOffset,
+						points[1] + vertIndexOffset,
+						points[2] + vertIndexOffset,
+						});
 			}
 
 			std::cout << mesh->HasFaces() << ','
 				<< mesh->HasNormals() << ','
 				<< mesh->HasPositions() << std::endl;
 
-			vertIndexOffset += vertPosN;
+			vertIndexOffset += vertN;
 		}
-    }
-    else {
-        printf("Error parsing '%s': '%s'\n", filename.c_str(), importer.GetErrorString());
-    }
+	}
+	else {
+		printf("Error parsing '%s': '%s'\n", filename.c_str(), importer.GetErrorString());
+	}
 
 	return *this;
 }
