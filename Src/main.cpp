@@ -25,18 +25,42 @@ int main() {
 		.program(basicProgram);
 
 	re.getScene(sceneID)
+		.sunPos({ 1.0, 4.0, 9.0, })
+		.sunCol({ 0.5, 0.5, 0.5, })
+
+		.moonPos({ 9.0, 4.0, 1.0, })
+		.moonCol({ 0.1, 0.2, 0.3, })
+
+		.ambientCol({ 0.6, 0.6, 0.6, })
+
 		.addMesh(meshID);
+
+	for(int i = 0; i < 100; i++){
+		auto mID = re.createMesh();
+		re.getMesh(meshID)
+
+	std::cout << "SUN: "
+		<< re.getScene(sceneID)
+		.sunCol().x()
+		<< ','
+		<< re.getScene(sceneID)
+		.sunCol().y()
+		<< ','
+		<< re.getScene(sceneID)
+		.sunCol().z()
+		<< ','
+		<< std::endl;
 
 	using namespace std::chrono;
 	long now = duration_cast<milliseconds>(
-		steady_clock::now().time_since_epoch()
-	).count(); 
+			steady_clock::now().time_since_epoch()
+			).count(); 
 	long previousTime = now - 100;
 
 	while(re.render(now - previousTime)){
 		now = duration_cast<milliseconds>(
-			steady_clock::now().time_since_epoch()
-		).count(); 
+				steady_clock::now().time_since_epoch()
+				).count(); 
 
 		std::cout << std::endl;
 	};

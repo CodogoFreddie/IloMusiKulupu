@@ -34,6 +34,8 @@ Engine::Engine(int width_, int height_):
 	SDL_GL_MakeCurrent(window, context);
 
 	glEnable(GL_DEPTH_TEST);
+	glEnable(GL_CULL_FACE);  
+
 	
 	glewExperimental = GL_TRUE;
 

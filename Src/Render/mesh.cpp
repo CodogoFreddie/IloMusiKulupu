@@ -235,6 +235,22 @@ void Mesh::loadLights(){
 	GLint sunPosToken = glGetUniformLocation(programToken_, "sunPos");
 	const auto sunPos = currentScene.sunPos();
 	glUniform3f(sunPosToken, sunPos.x(), sunPos.y(), sunPos.z());
+
+	GLint sunColToken = glGetUniformLocation(programToken_, "sunCol");
+	const auto sunCol = currentScene.sunCol();
+	glUniform3f(sunColToken, sunCol.x(), sunCol.y(), sunCol.z());
+
+	GLint moonPosToken = glGetUniformLocation(programToken_, "moonPos");
+	const auto moonPos = currentScene.moonPos();
+	glUniform3f(moonPosToken, moonPos.x(), moonPos.y(), moonPos.z());
+
+	GLint moonColToken = glGetUniformLocation(programToken_, "moonCol");
+	const auto moonCol = currentScene.moonCol();
+	glUniform3f(moonColToken, moonCol.x(), moonCol.y(), moonCol.z());
+
+	GLint ambientColToken = glGetUniformLocation(programToken_, "ambientCol");
+	const auto ambientCol = currentScene.ambientCol();
+	glUniform3f(ambientColToken, ambientCol.x(), ambientCol.y(), ambientCol.z());
 };
 
 void Mesh::calculateMVP(){
@@ -289,24 +305,3 @@ void Mesh::reset(){
 
 	modelMatrix;
 };
-
-//std::size_t Mesh::addVertex(
-//core::math::cartesian::CartThree<> position,
-//core::math::cartesian::CartThree<> color,
-//core::math::cartesian::CartThree<> normal
-//){
-//positions_.push_back(position);
-//colors_.push_back(color);
-//normals_.push_back(normal);
-
-//assert(positions_.size() == colors_.size() &&
-//positions_.size() == normals_.size());
-
-//return positions_.size();
-//};
-
-//std::size_t Mesh::addFace(Face f){
-//faces_.push_back(f);
-//return faces_.size();
-//};
-
