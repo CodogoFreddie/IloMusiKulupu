@@ -316,14 +316,14 @@ void Mesh::render(){
 	calculateMVP();
 
 	glDrawElements(
-			GL_TRIANGLES,
-			faces_.size() * 3,
-			GL_UNSIGNED_INT,
-			0
-			);
+		GL_LINES,
+		faces_.size() * 3,
+		GL_UNSIGNED_INT,
+		0
+	);
 };
 
-void Mesh::reset(){
+Mesh& Mesh::reset(){
 	positions_.clear();
 	colors_.clear();
 	normals_.clear();
@@ -331,7 +331,25 @@ void Mesh::reset(){
 
 	position_ = { 0, 0, 0, };
 	rotation_ = { 0, 0, 0, };
-	scale_ = { 0, 0, 0, };
+	scale_ = { 1, 1, 1, };
 
-	modelMatrix;
+	return (*this);
+};
+
+Mesh& Mesh::addVertex(
+	core::math::cartesian::CartThree<> position,
+	core::math::cartesian::CartThree<> color,
+	core::math::cartesian::CartThree<> normal
+){
+	positions_.push_back(position);
+	colors_.push_back(color);
+	normals_.push_back(normal);
+
+	return (*this);
+};
+
+Mesh& Mesh::addFace(Face f){
+	faces_.push_back(f);
+
+	return (*this);
 };

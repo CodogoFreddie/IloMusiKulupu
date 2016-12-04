@@ -9,8 +9,8 @@ int main() {
 	auto basicProgram = re.createProgram();
 
 	re.getCamera(cameraID)
-		.position({ 5.0, 5.0, 2.0, })
-		.lookingAt({ 0.0, 0.0, 4.0, })
+		.position({ 2.0, 2.0, 2.0, })
+		.lookingAt({ 0.0, 0.0, 0.0, })
 		.scene(sceneID);
 
 	re.currentCamera(cameraID);
@@ -21,17 +21,41 @@ int main() {
 		.compile();
 
 	re.getMesh(meshID)
-		.loadFromFile("Blend/tree_01_0.obj")
-		.program(basicProgram);
+		.program(basicProgram)
+		.reset()
+
+		.addVertex(
+				{ 3.0f,  0.0f,  0.0f, },
+				{ 1.0f,  1.0f,  1.0f, },
+				{ 1.0f,  1.0f,  1.0f, }
+				)
+
+		.addVertex(
+				{ 0.0f,  1.0f,  1.0f, },
+				{ 1.0f,  1.0f,  1.0f, },
+				{ 1.0f,  1.0f,  1.0f, }
+				)
+
+		.addVertex(
+				{ 0.0f, -1.0f,  2.0f, },
+				{ 1.0f,  1.0f,  1.0f, },
+				{ 1.0f,  1.0f,  1.0f, }
+				)
+
+		.addVertex(
+				{-3.0f,  0.0f,  3.0f, },
+				{ 1.0f,  1.0f,  1.0f, },
+				{ 1.0f,  1.0f,  1.0f, }
+				);
 
 	re.getScene(sceneID)
 		.sunPos({ 1.0, 4.0, 9.0, })
-		.sunCol({ 0.5, 0.5, 0.5, })
+		.sunCol({ 0.0, 0.0, 0.0, })
 
 		.moonPos({ 9.0, 4.0, 1.0, })
-		.moonCol({ 0.1, 0.2, 0.3, })
+		.moonCol({ 0.0, 0.0, 0.0, })
 
-		.ambientCol({ 0.0, 0.0, 0.0, })
+		.ambientCol({ 1.0, 1.0, 1.0, })
 
 		.addMesh(meshID);
 
@@ -45,15 +69,15 @@ int main() {
 
 	while(re.render(now - previousTime)){
 		now = duration_cast<milliseconds>(
-			steady_clock::now().time_since_epoch()
-		).count(); 
+				steady_clock::now().time_since_epoch()
+				).count(); 
 
 		re.getMesh(meshID)
 			.rotation( {
-				0.0,
-				0.0,
-				i,
-			} );
+					0.0,
+					0.0,
+					i,
+					} );
 
 		i += 1.0;
 	};

@@ -96,15 +96,15 @@ public:
 	GENERATE_GETTERS_AND_SETTERS(rotation);
 	GENERATE_GETTERS_AND_SETTERS(scale);
 
-	void reset();
+	Mesh& reset();
 
-	//std::size_t addVertex(
-		//core::math::cartesian::CartThree<> position,
-		//core::math::cartesian::CartThree<> color,
-		//core::math::cartesian::CartThree<> normal
-	//);
+	Mesh& addVertex(
+		core::math::cartesian::CartThree<> position,
+		core::math::cartesian::CartThree<> color,
+		core::math::cartesian::CartThree<> normal
+	);
 
-	//std::size_t addFace(Face f);
+	Mesh& addFace(Face f);
 
 	void render();
 

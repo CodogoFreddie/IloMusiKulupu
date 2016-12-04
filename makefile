@@ -5,7 +5,7 @@ INCLUDEPATHS = -I./Inc \
 			   -I/usr/include/GL -I/usr/include/libdrm 
 
 COMPILEFLAGS = -std=gnu++14 -Wall -pthread -g
-PROJECTNAME = FreddieLib
+PROJECTNAME = IloMusiKulipu
 EXE_NAME = $(PROJECTNAME).out
 TESTS_EXE_NAME = $(PROJECTNAME).test
 
