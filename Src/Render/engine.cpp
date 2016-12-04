@@ -19,6 +19,8 @@ Engine::Engine(int width_, int height_):
 	SDL_GL_SetAttribute(SDL_GL_CONTEXT_MAJOR_VERSION, 3);
 	SDL_GL_SetAttribute(SDL_GL_CONTEXT_MINOR_VERSION, 2);
 	SDL_GL_SetAttribute(SDL_GL_STENCIL_SIZE, 8);
+	SDL_GL_SetAttribute(SDL_GL_MULTISAMPLEBUFFERS, 1);
+	SDL_GL_SetAttribute(SDL_GL_MULTISAMPLESAMPLES, 8);
 
 	window = SDL_CreateWindow(
 		"OpenGL",
@@ -35,7 +37,7 @@ Engine::Engine(int width_, int height_):
 
 	glEnable(GL_DEPTH_TEST);
 	glEnable(GL_CULL_FACE);  
-
+	glEnable(GL_MULTISAMPLE);
 	
 	glewExperimental = GL_TRUE;
 
@@ -55,7 +57,7 @@ bool Engine::render(long deltaTime){
 	}
 
 	// Clear the screen to black
-	glClearColor(1.0f, 1.0f, 1.0f, 1.0f);
+	glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
 	for(auto meshID : scenes_[currentScene()].meshes()){

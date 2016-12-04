@@ -40,3 +40,5 @@ for resolution in range(1, 20):
             axis_forward='X',
             axis_up='Z',
             use_selection = True)
+
+print

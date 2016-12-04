@@ -9,8 +9,8 @@ int main() {
 	auto basicProgram = re.createProgram();
 
 	re.getCamera(cameraID)
-		.position({-4, -4, 2})
-		.lookingAt({0,0,4})
+		.position({ -2, -2, 4, })
+		.lookingAt({0,0,0})
 		.scene(sceneID);
 
 	re.currentCamera(cameraID);
@@ -21,7 +21,7 @@ int main() {
 		.compile();
 
 	re.getMesh(meshID)
-		.loadFromFile("Blend/tree_01_0.obj")
+		.loadFromFile("Blend/bush_01_0.obj")
 		.program(basicProgram);
 
 	re.getScene(sceneID)
@@ -34,10 +34,6 @@ int main() {
 		.ambientCol({ 0.6, 0.6, 0.6, })
 
 		.addMesh(meshID);
-
-	for(int i = 0; i < 100; i++){
-		auto mID = re.createMesh();
-		re.getMesh(meshID)
 
 	std::cout << "SUN: "
 		<< re.getScene(sceneID)
@@ -57,12 +53,21 @@ int main() {
 			).count(); 
 	long previousTime = now - 100;
 
+	float i = 0;
+
 	while(re.render(now - previousTime)){
 		now = duration_cast<milliseconds>(
-				steady_clock::now().time_since_epoch()
-				).count(); 
+			steady_clock::now().time_since_epoch()
+		).count(); 
 
-		std::cout << std::endl;
+		re.getMesh(meshID)
+			.rotation( {
+				i ,
+				i * 2,
+				i * 3,
+			} );
+
+		i += 1.0;
 	};
 
 	return 0;
