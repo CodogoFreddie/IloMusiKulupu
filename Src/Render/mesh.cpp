@@ -254,21 +254,40 @@ void Mesh::loadLights(){
 };
 
 void Mesh::calculateMVP(){
-	GLint mvpToken = glGetUniformLocation(programToken_, "mvp");
-
 	auto viewMatrix = Engine::get().getCamera( Engine::get().currentCamera() ).viewMatrix();
 	auto projectionMatrix = Engine::get().projectionMatrix();
 
-	modelMatrix = glm::rotate(modelMatrix, glm::radians(1.0f), glm::vec3(0,0,1));
+	modelMatrix = glm::rotate(glm::mat4(), glm::radians(rotation_.x()), glm::vec3(1,0,0));
+	modelMatrix = glm::rotate(modelMatrix, glm::radians(rotation_.y()), glm::vec3(0,1,0));
+	modelMatrix = glm::rotate(modelMatrix, glm::radians(rotation_.z()), glm::vec3(0,0,1));
 
-	mvpMatrix = projectionMatrix * viewMatrix * modelMatrix;
+	modelMatrix = glm::translate(
+		modelMatrix,
+		glm::vec3(
+			position_.x(),
+			position_.y(),
+			position_.z()
+		)
+	);
+
+	GLint modelMatToken = glGetUniformLocation(programToken_, "modelMat");
 
 	glUniformMatrix4fv(
-			mvpToken,
-			1,
-			GL_FALSE,
-			glm::value_ptr(mvpMatrix)
-			);
+		modelMatToken,
+		1,
+		GL_FALSE,
+		glm::value_ptr(modelMatrix)
+	);
+
+	mvpMatrix = projectionMatrix * viewMatrix * modelMatrix;
+	GLint mvpToken = glGetUniformLocation(programToken_, "mvp");
+
+	glUniformMatrix4fv(
+		mvpToken,
+		1,
+		GL_FALSE,
+		glm::value_ptr(mvpMatrix)
+	);
 }
 
 void Mesh::render(){
