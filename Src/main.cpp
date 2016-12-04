@@ -9,8 +9,8 @@ int main() {
 	auto basicProgram = re.createProgram();
 
 	re.getCamera(cameraID)
-		.position({ -2, -2, 4, })
-		.lookingAt({0,0,0})
+		.position({ 5.0, 5.0, 2.0, })
+		.lookingAt({ 0.0, 0.0, 4.0, })
 		.scene(sceneID);
 
 	re.currentCamera(cameraID);
@@ -21,7 +21,7 @@ int main() {
 		.compile();
 
 	re.getMesh(meshID)
-		.loadFromFile("Blend/bush_01_0.obj")
+		.loadFromFile("Blend/tree_01_0.obj")
 		.program(basicProgram);
 
 	re.getScene(sceneID)
@@ -31,21 +31,9 @@ int main() {
 		.moonPos({ 9.0, 4.0, 1.0, })
 		.moonCol({ 0.1, 0.2, 0.3, })
 
-		.ambientCol({ 0.6, 0.6, 0.6, })
+		.ambientCol({ 0.0, 0.0, 0.0, })
 
 		.addMesh(meshID);
-
-	std::cout << "SUN: "
-		<< re.getScene(sceneID)
-		.sunCol().x()
-		<< ','
-		<< re.getScene(sceneID)
-		.sunCol().y()
-		<< ','
-		<< re.getScene(sceneID)
-		.sunCol().z()
-		<< ','
-		<< std::endl;
 
 	using namespace std::chrono;
 	long now = duration_cast<milliseconds>(
@@ -62,9 +50,9 @@ int main() {
 
 		re.getMesh(meshID)
 			.rotation( {
-				i ,
-				i * 2,
-				i * 3,
+				0.0,
+				0.0,
+				i,
 			} );
 
 		i += 1.0;

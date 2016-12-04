@@ -1,6 +1,6 @@
 #!/bin/bash
 
-sudo dnf install blender glew-devel glu-devel SDL2-devel
+sudo dnf install blender glew-devel glu-devel SDL2-devel inotify-tools
 
 mkdir Dependencies
 

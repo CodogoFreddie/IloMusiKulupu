@@ -65,7 +65,7 @@ private:
 
 	point position_;
 	point rotation_;
-	point scale_;
+	point scale_ = { 1.0, 1.0, 1.0, };
 
 	glm::mat4 modelMatrix;
 	glm::mat4 mvpMatrix;
