@@ -2,7 +2,8 @@ CC = clang++
 INCLUDEPATHS = -I./Inc \
 			   -I./Dependencies/FredLib/Inc \
 			   -I/usr/include/SDL2 \
-			   -I/usr/include/GL -I/usr/include/libdrm 
+			   -I/usr/include/GL -I/usr/include/libdrm \
+			   -I./Dependencies/wren/src/include
 
 COMPILEFLAGS = -std=gnu++14 -Wall -pthread -g
 PROJECTNAME = IloMusiKulipu
@@ -24,7 +25,9 @@ COMPILEFLAGS = -std=gnu++14 \
 
 LINK_LIBS = -lSDL2 \
 			-lGLEW -lGLU -lGL \
-			-lassimp
+			-lassimp \
+			-L./Dependencies/wren/lib/ \
+			-lwren \
 
 # cpp source files and compiled objects
 CPP_SRC = $(shell find Src -name "*.cpp")
