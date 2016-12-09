@@ -1,11 +1,13 @@
 CC = clang++
-INCLUDEPATHS = -I./Inc \
+INCLUDEPATHS = \
+			   -I./Inc \
 			   -I./Dependencies/FredLib/Inc \
+			   -I./Dependencies/wren/src/include \
+			   -I./Dependencies/wrenpp/ \
 			   -I/usr/include/SDL2 \
-			   -I/usr/include/GL -I/usr/include/libdrm \
-			   -I./Dependencies/wren/src/include
+			   -I/usr/include/GL \
+			   -I/usr/include/libdrm 
 
-COMPILEFLAGS = -std=gnu++14 -Wall -pthread -g
 PROJECTNAME = IloMusiKulipu
 EXE_NAME = $(PROJECTNAME).out
 TESTS_EXE_NAME = $(PROJECTNAME).test
@@ -18,12 +20,15 @@ TEST_OBJECTS = \
 			   ./Dependencies/googletest/googletest/libgtest.a \
 			   ./Dependencies/googletest/googlemock/libgmock.a
 
-COMPILEFLAGS = -std=gnu++14 \
+COMPILEFLAGS = \
+			   -std=gnu++14 \
 			   -Wall \
 			   -pthread \
 			   -g \
+			   -fcolor-diagnostics \
 
-LINK_LIBS = -lSDL2 \
+LINK_LIBS = \
+			-lSDL2 \
 			-lGLEW -lGLU -lGL \
 			-lassimp \
 			-L./Dependencies/wren/lib/ \

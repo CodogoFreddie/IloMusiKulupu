@@ -2,10 +2,10 @@
 
 namespace world {
 namespace level {
-namespace terain {
+namespace terrain {
 
 
 
-} //terain
+} //terrain
 } //level
 } //world

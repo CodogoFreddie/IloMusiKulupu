@@ -30,3 +30,6 @@ popd
 
 echo "FredLib"
 git clone git@github.com:CodogoFreddie/FredLib.git --depth=1
+
+echo "Wren++"
+git clone git@github.com:Nelarius/wrenpp.git --depth=1

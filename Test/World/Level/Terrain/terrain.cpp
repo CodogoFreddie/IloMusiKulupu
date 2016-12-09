@@ -1,11 +1,11 @@
-#include<World/Level/Terain/terain.hpp>
+#include<World/Level/Terrain/terrain.hpp>
 
 #include<gtest/gtest.h>
 #include<gmock/gmock.h>
 
 using namespace world;
 using namespace level;
-using namespace terain;
+using namespace terrain;
 
-TEST(TERAIN, FailTest){EXPECT_TRUE(false);}
+TEST(TERRAIN, FailTest){EXPECT_TRUE(false);}
 

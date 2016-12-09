@@ -1,6 +1,6 @@
-#include<World/Level/Terain/terain.hpp>
+#include<World/Level/Terrain/terrain.hpp>
 
 using namespace world;
 using namespace level;
-using namespace terain;
+using namespace terrain;
 
