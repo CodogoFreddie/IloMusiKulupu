@@ -1,5 +1,11 @@
-import "./mesh" for Mesh
+import "./poisson" for Poisson
 
-var mesh = Mesh.new()
+var generator = Poisson.new()
 
-System.print(mesh.verts)
+var genFib = generator.create()
+
+while(!genFib.isDone){
+	var mesh = genFib.call()
+
+	System.print(mesh.toString)
+}
