@@ -26,14 +26,30 @@ class Vertex {
 	distance(v){
 		var xD = _x - v.x
 		var yD = _y - v.y
-		/*var zD = _z - v.z*/
-		var zD = 0
+		var zD = _z - v.z
 
 		return ( (xD * xD) + (yD * yD) + (zD * zD)).sqrt
+	}
+
+	distance(v, n){
+		if(n == 3){
+			return distance(v)
+		}
+		if(n == 2){
+			var xD = _x - v.x
+			var yD = _y - v.y
+
+			return ( (xD * xD) + (yD * yD) ).sqrt
+		}
+		if(n == 1){
+			var xD = _x - v.x
+
+			return xD.abs
+		}
 	}
 
 	toString {
 		return "" + x.toString + "\t" + y.toString + "\t" + z.toString
 	}
-			
+
 }

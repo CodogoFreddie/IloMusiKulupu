@@ -15,8 +15,8 @@ class Poisson {
 	}
 
 	construct new(){
-		_bounds = 40
-		_tries = 30
+		_bounds = 20
+		_tries = 20
 		_distance = 2
 
 		_rando = Random.new()
@@ -30,15 +30,21 @@ class Poisson {
 		
 		var placementIsSuccess = false
 		for(i in 0..._tries){
+			var phi = _rando.float(0, 2 * Num.pi)
+			var costheta = _rando.float(-1,1)
+			var u = 1 + _rando.float(0,1).sqrt
+			var theta = costheta.acos
+			var r = _distance * u
+
 			testVert = Vertex.new(
-				_rando.float(activeVert.x - _distance, activeVert.x + _distance),
-				_rando.float(activeVert.y - _distance, activeVert.y + _distance),
-				_rando.float(activeVert.z - _distance, activeVert.z + _distance)
+				activeVert.x + ( r * theta.sin * phi.cos ),
+				activeVert.y + ( r * theta.sin * phi.sin ),
+				activeVert.z + ( r * theta.cos )
 			)
 
 			if(vertexIsValid(testVert)){
 				placementIsSuccess = true
-				break
+					break
 			}
 		}
 
@@ -52,19 +58,19 @@ class Poisson {
 
 	vertexIsValid(vert){
 		if(vert.x.abs > _bounds ||
-			vert.y.abs > _bounds ||
-			vert.z.abs > _bounds){
+				vert.y.abs > _bounds ||
+				vert.z.abs > _bounds){
 			return false
 		}
 
 		var tooClose = false
 
-		for(otherVert in  _mesh.verts){
-			if(vert.distance(otherVert) < _distance){
-				tooClose = true
-				break
+			for(otherVert in  _mesh.verts){
+				if(vert.distance(otherVert, 2) < _distance){
+					tooClose = true
+						break
+				}
 			}
-		}
 
 		return !tooClose
 	}
@@ -73,10 +79,10 @@ class Poisson {
 		return Fiber.new {
 			while(_mesh.openVerts.count != 0){
 				var startingVertsN = _mesh.verts.count
-				while(startingVertsN == _mesh.verts.count &&
-					_mesh.openVerts.count > 0){
-					placeVert()
-				}
+					while(startingVertsN == _mesh.verts.count &&
+							_mesh.openVerts.count > 0){
+						placeVert()
+					}
 
 				Fiber.yield(_mesh)
 			}
