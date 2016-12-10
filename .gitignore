@@ -13,3 +13,5 @@ test
 Dependencies
 *.obj
 *.mtl
+*.dat
+*.png

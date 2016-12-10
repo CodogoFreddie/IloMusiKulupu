@@ -4,8 +4,14 @@ var generator = Poisson.new()
 
 var genFib = generator.create()
 
+var running = true
+var mesh
 while(!genFib.isDone){
-	var mesh = genFib.call()
+	var newMesh = genFib.call()
 
-	System.print(mesh.toString)
+	if(newMesh){
+		mesh = newMesh
+	}
 }
+
+System.print(mesh.toString)
