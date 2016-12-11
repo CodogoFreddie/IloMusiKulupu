@@ -32,6 +32,7 @@ LINK_LIBS = \
 			-lGLEW -lGLU -lGL \
 			-lassimp \
 			-L./Dependencies/wren/lib/ \
+			-Bstatic \
 			-lwren \
 
 # cpp source files and compiled objects

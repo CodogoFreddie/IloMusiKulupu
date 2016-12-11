@@ -24,7 +24,9 @@ class Mesh {
 	}
 
 	toString {
-		var acc = "#x\ty\tz\n"
+
+		var acc = ""
+
 		for(vert in _verts){
 			acc = acc + vert.toString + "\n"
 		}

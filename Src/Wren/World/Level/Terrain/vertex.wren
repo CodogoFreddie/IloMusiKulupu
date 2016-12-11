@@ -49,7 +49,8 @@ class Vertex {
 	}
 
 	toString {
-		return "" + x.toString + "\t" + y.toString + "\t" + z.toString
+		/*return "" + x.toString + "    \t" + y.toString + "    \t" + z.toString*/
+		return "{" + x.toString + "," + y.toString + "," + z.toString + "},"
 	}
 
 }

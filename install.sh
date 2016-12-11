@@ -26,6 +26,7 @@ echo "Wren"
 git clone git@github.com:munificent/wren.git --depth=1
 pushd wren
 	make -j4
+	rm lib/wren.so
 popd
 
 echo "FredLib"

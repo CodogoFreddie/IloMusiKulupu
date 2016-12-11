@@ -5,7 +5,6 @@ int main() {
 
 	auto cameraID = re.createCamera();
 	auto sceneID = re.createScene();
-	auto meshID = re.createMesh();
 	auto basicProgram = re.createProgram();
 
 	re.getCamera(cameraID)
@@ -20,34 +19,6 @@ int main() {
 		.fragmentFileName("Src/GLSL/fragmentShader.glsl")
 		.compile();
 
-	re.getMesh(meshID)
-		.program(basicProgram)
-		.reset()
-
-		.addVertex(
-				{ 3.0f,  0.0f,  0.0f, },
-				{ 1.0f,  1.0f,  1.0f, },
-				{ 1.0f,  1.0f,  1.0f, }
-				)
-
-		.addVertex(
-				{ 0.0f,  1.0f,  1.0f, },
-				{ 1.0f,  1.0f,  1.0f, },
-				{ 1.0f,  1.0f,  1.0f, }
-				)
-
-		.addVertex(
-				{ 0.0f, -1.0f,  2.0f, },
-				{ 1.0f,  1.0f,  1.0f, },
-				{ 1.0f,  1.0f,  1.0f, }
-				)
-
-		.addVertex(
-				{-3.0f,  0.0f,  3.0f, },
-				{ 1.0f,  1.0f,  1.0f, },
-				{ 1.0f,  1.0f,  1.0f, }
-				);
-
 	re.getScene(sceneID)
 		.sunPos({ 1.0, 4.0, 9.0, })
 		.sunCol({ 0.0, 0.0, 0.0, })
@@ -55,9 +26,7 @@ int main() {
 		.moonPos({ 9.0, 4.0, 1.0, })
 		.moonCol({ 0.0, 0.0, 0.0, })
 
-		.ambientCol({ 1.0, 1.0, 1.0, })
-
-		.addMesh(meshID);
+		.ambientCol({ 1.0, 1.0, 1.0, });
 
 	using namespace std::chrono;
 	long now = duration_cast<milliseconds>(
@@ -65,21 +34,10 @@ int main() {
 			).count(); 
 	long previousTime = now - 100;
 
-	float i = 0;
-
 	while(re.render(now - previousTime)){
 		now = duration_cast<milliseconds>(
-				steady_clock::now().time_since_epoch()
-				).count(); 
-
-		re.getMesh(meshID)
-			.rotation( {
-					0.0,
-					0.0,
-					i,
-					} );
-
-		i += 1.0;
+			steady_clock::now().time_since_epoch()
+		).count(); 
 	};
 
 	return 0;
