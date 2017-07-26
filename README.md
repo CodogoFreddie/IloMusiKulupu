@@ -11,4 +11,5 @@
 + You don't need a UI, using TokiPona/Lojban you can have a dialoguge only interaction system with NPCs
 + OMG NPCs can all comunicate using language and all!!!!
 + lets stick to toki pona, much fewer things to deal with
++ This natural language processing can totes be done in prolog, I can't believe that's finally coming in useful
 + Have music composed by team of agents, each playing a different instrucment, they comunicate their intentions with eachother, grading the bar they just composed against all the other proposed next bars and  imporving  it with a fittness  function. then  can vote on  keychanges  and such
